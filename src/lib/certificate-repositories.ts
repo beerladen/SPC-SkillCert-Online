@@ -1,5 +1,10 @@
 import type { ResultSetHeader, RowDataPacket } from "mysql2/promise";
 import { headers } from "next/headers";
+import {
+  normalizeCertificateLayoutConfig,
+  serializeCertificateLayoutConfig,
+  type CertificateTemplateLayoutConfig,
+} from "@/lib/certificate-layout";
 import { executeQuery, queryRows } from "@/lib/db";
 import { formatDateTime } from "@/lib/format";
 import { getCertificateSignerSettings } from "@/lib/certificate-signer-settings";
@@ -99,6 +104,7 @@ export interface CertificateTemplateSettings {
   issuerName: string;
   signerName: string;
   signerPosition: string;
+  layoutConfig: CertificateTemplateLayoutConfig;
   status: "draft" | "active" | "archived";
   isDefault: boolean;
 }
@@ -111,6 +117,7 @@ export interface SaveCertificateTemplateInput {
   issuerName: string;
   signerName?: string | null;
   signerPosition: string;
+  layoutConfigJson?: string | null;
   status?: "draft" | "active" | "archived";
   userId: number;
 }
@@ -128,6 +135,7 @@ function mapTemplate(row: RowDataPacket | null | undefined): CertificateTemplate
     issuerName: row?.issuer_name || "วิทยาลัยสารพัดช่างสุรินทร์",
     signerName: row?.signer_name || "",
     signerPosition: row?.signer_position || "ผู้อำนวยการวิทยาลัย",
+    layoutConfig: normalizeCertificateLayoutConfig(row?.layout_config_json),
     status: row?.status || "active",
     isDefault: Boolean(row?.is_default ?? true),
   };
@@ -136,7 +144,7 @@ function mapTemplate(row: RowDataPacket | null | undefined): CertificateTemplate
 export async function getDefaultCertificateTemplate(): Promise<CertificateTemplateSettings> {
   const rows = await queryRows<RowDataPacket>(
     `SELECT id, name, background_url, signature_url, issuer_name, signer_name,
-            signer_position, status, is_default
+            signer_position, layout_config_json, status, is_default
      FROM certificate_templates
      WHERE status <> 'archived'
      ORDER BY is_default DESC, FIELD(status, 'active', 'draft'), id DESC
@@ -149,6 +157,7 @@ export async function getDefaultCertificateTemplate(): Promise<CertificateTempla
 export async function saveDefaultCertificateTemplate(input: SaveCertificateTemplateInput) {
   const status = input.status ?? "active";
   const templateName = input.name || "เทมเพลตใบประกาศลงนามผู้อำนวยการวิทยาลัย";
+  const layoutConfigJson = serializeCertificateLayoutConfig(input.layoutConfigJson);
 
   await executeQuery<ResultSetHeader>("UPDATE certificate_templates SET is_default = FALSE WHERE is_default = TRUE");
 
@@ -156,7 +165,7 @@ export async function saveDefaultCertificateTemplate(input: SaveCertificateTempl
     await executeQuery<ResultSetHeader>(
       `UPDATE certificate_templates
        SET name = ?, background_url = ?, signature_url = ?, issuer_name = ?,
-           signer_name = ?, signer_position = ?, status = ?, is_default = TRUE
+           signer_name = ?, signer_position = ?, layout_config_json = ?, status = ?, is_default = TRUE
        WHERE id = ?`,
       [
         templateName,
@@ -165,6 +174,7 @@ export async function saveDefaultCertificateTemplate(input: SaveCertificateTempl
         input.issuerName,
         input.signerName || null,
         input.signerPosition,
+        layoutConfigJson,
         status,
         input.id,
       ],
@@ -176,21 +186,14 @@ export async function saveDefaultCertificateTemplate(input: SaveCertificateTempl
     `INSERT INTO certificate_templates
        (name, background_url, signature_url, issuer_name, signer_name, signer_position,
         layout_config_json, status, is_default)
-     VALUES (?, ?, ?, ?, ?, ?, JSON_OBJECT(
-        'paper', JSON_OBJECT('size', 'A4', 'orientation', 'landscape'),
-        'learnerName', JSON_OBJECT('x', 50, 'y', 43, 'width', 58),
-        'courseTitle', JSON_OBJECT('x', 50, 'y', 57, 'width', 58),
-        'certificateNo', JSON_OBJECT('x', 17, 'y', 82),
-        'issuedAt', JSON_OBJECT('x', 50, 'y', 67),
-        'signature', JSON_OBJECT('x', 50, 'y', 76),
-        'qr', JSON_OBJECT('x', 84, 'y', 77)
-      ), ?, TRUE)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, TRUE)
      ON DUPLICATE KEY UPDATE
        background_url = VALUES(background_url),
        signature_url = VALUES(signature_url),
        issuer_name = VALUES(issuer_name),
        signer_name = VALUES(signer_name),
        signer_position = VALUES(signer_position),
+       layout_config_json = VALUES(layout_config_json),
        status = VALUES(status),
        is_default = TRUE`,
     [
@@ -200,6 +203,7 @@ export async function saveDefaultCertificateTemplate(input: SaveCertificateTempl
       input.issuerName,
       input.signerName || null,
       input.signerPosition,
+      layoutConfigJson,
       status,
     ],
   );
@@ -547,7 +551,8 @@ export async function verifyCertificate(certificateNo: string) {
   const rows = await queryRows<RowDataPacket>(
     `SELECT cert.id, cert.certificate_no, cert.learner_name, cert.course_title,
             cert.issued_at, cert.status, cert.pdf_url, cert.document_type,
-            tpl.background_url, tpl.signature_url, tpl.issuer_name, tpl.signer_name, tpl.signer_position
+            tpl.background_url, tpl.signature_url, tpl.issuer_name, tpl.signer_name, tpl.signer_position,
+            tpl.layout_config_json
      FROM certificates cert
      LEFT JOIN certificate_templates tpl ON tpl.id = cert.template_id
      WHERE cert.certificate_no = ?
@@ -592,6 +597,7 @@ export async function verifyCertificate(certificateNo: string) {
     documentTypeLabel: certificateDocumentTypeLabel(documentType),
     backgroundUrl:
       certificate.background_url || "/uploads/certificates/templates/spc-director-certificate-template.jpg",
+    layoutConfig: normalizeCertificateLayoutConfig(certificate.layout_config_json),
     signatureUrl: directorSignatureUrl,
     issuerName: certificate.issuer_name || "วิทยาลัยสารพัดช่างสุรินทร์",
     signerName: directorName,

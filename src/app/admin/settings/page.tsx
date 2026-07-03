@@ -6,6 +6,7 @@ import {
   saveSiteSettingsAction,
   saveThemeSettingsAction,
 } from "@/app/admin/settings/actions";
+import { CertificateTemplateDesigner } from "@/components/admin/certificate-template-designer";
 import { AdminLayout } from "@/components/layout/admin-layout";
 import { ActionFeedback } from "@/components/ui/action-feedback";
 import { Badge } from "@/components/ui/badge";
@@ -357,8 +358,9 @@ export default async function AdminSettingsPage({
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form action={saveCertificateTemplateAction} className="grid gap-5">
+              <form id="certificateTemplateForm" action={saveCertificateTemplateAction} className="grid gap-5">
                 <input type="hidden" name="templateId" value={certificateTemplate.id ?? ""} />
+                <CertificateTemplateDesigner formId="certificateTemplateForm" template={certificateTemplate} />
 
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="grid gap-2">

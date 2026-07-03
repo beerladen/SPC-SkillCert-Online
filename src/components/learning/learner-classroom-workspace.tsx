@@ -347,6 +347,14 @@ function previewEmbedUrl(url: string) {
   return url;
 }
 
+function hasPracticeEmbed(html?: string | null) {
+  const value = html?.trim();
+  if (!value) return false;
+
+  return /<(iframe|script|form|input|textarea|select|button|canvas|object|embed|video|audio)\b/i.test(value)
+    || /\b(contenteditable|data-practice-workspace)\b/i.test(value);
+}
+
 function scoreLevel(percent: number | null | undefined) {
   if (percent === null || percent === undefined) {
     return {
@@ -1711,10 +1719,12 @@ function TaskWorkspacePanel({
   const submittedFiles = taskSubmittedFiles(task);
   const evidenceCount = evidenceItems.length;
   const scorePercent = taskScorePercent(task);
-  const canPreviewResource = canPreviewUrl(task.resourceUrl);
   const promptPreviewUrl = task.instructionFileUrl && canPreviewUrl(task.instructionFileUrl)
     ? task.instructionFileUrl
     : null;
+  const instructionHtml = task.instructionHtml?.trim() ? task.instructionHtml : "";
+  const hasInstructionHtml = Boolean(instructionHtml);
+  const showPracticeWorkspace = hasPracticeEmbed(instructionHtml);
   const hasSupportingFiles = Boolean(task.instructionFileUrl) || task.attachments.length > 0;
   const [selectedSubmissionFiles, setSelectedSubmissionFiles] = useState<SelectedUploadFile[]>([]);
   const [selectedEvidenceFiles, setSelectedEvidenceFiles] = useState<SelectedUploadFile[]>([]);
@@ -1761,9 +1771,9 @@ function TaskWorkspacePanel({
                 src={previewEmbedUrl(promptPreviewUrl)}
                 title={`ใบงาน ${task.title}`}
               />
-            ) : task.instructionHtml ? (
+            ) : hasInstructionHtml && !showPracticeWorkspace ? (
               <div className="max-h-[720px] min-h-[520px] overflow-auto bg-white p-6 text-sm leading-7 [overflow-wrap:anywhere] [&_*]:max-w-full">
-                <div dangerouslySetInnerHTML={{ __html: task.instructionHtml }} />
+                <div dangerouslySetInnerHTML={{ __html: instructionHtml }} />
               </div>
             ) : (
               <div className="grid min-h-[420px] place-items-center bg-secondary/20 p-8 text-center text-sm leading-6 text-muted-foreground">
@@ -1780,7 +1790,7 @@ function TaskWorkspacePanel({
               {task.sectionTitle && <Badge variant="outline">{task.sectionTitle}</Badge>}
               {task.lessonTitle && <Badge variant="outline">{task.lessonTitle}</Badge>}
               {task.instructionFileUrl && <Badge variant="outline">PDF ใบงาน</Badge>}
-              {task.instructionHtml && <Badge variant="outline">HTML</Badge>}
+              {hasInstructionHtml && <Badge variant="outline">{showPracticeWorkspace ? "HTML ฝึกปฏิบัติ" : "HTML"}</Badge>}
               {scorePercent !== null && <Badge variant="outline">คะแนนล่าสุด {scorePercent}%</Badge>}
             </div>
             {task.description && (
@@ -1842,51 +1852,38 @@ function TaskWorkspacePanel({
         </div>
 
         <div className="grid content-start gap-4 xl:sticky xl:top-4 xl:max-h-[calc(100dvh-118px)] xl:overflow-y-auto xl:pr-1">
-          <section className="rounded-2xl border border-cyan-200/80 bg-gradient-to-br from-cyan-50 via-background to-primary/5 p-4 shadow-sm">
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2">
-                  <div className="rounded-xl bg-cyan-100 p-2 text-primary shadow-xs">
-                    <Link2 className="size-5" />
-                  </div>
-                  <h4 className="text-base font-semibold">พื้นที่ปฏิบัติ</h4>
-                </div>
-                {task.resourceUrl && (
-                  <Button className="border-primary/30 bg-background shadow-xs hover:bg-primary/10" variant="outline" size="sm" asChild>
-                    <a href={task.resourceUrl} target="_blank" rel="noreferrer">
-                      <ExternalLink className="size-4" />
-                      เปิดไฟล์ต้นแบบ
-                    </a>
-                  </Button>
-                )}
-              </div>
-              {task.resourceUrl ? (
-                <div className="overflow-hidden rounded-lg border bg-secondary/20">
-                  {canPreviewResource ? (
-                    <iframe
-                      className="h-72 w-full bg-background"
-                      src={previewEmbedUrl(task.resourceUrl)}
-                      title={`พื้นที่ทำงาน ${task.title}`}
-                    />
-                  ) : (
-                    <div className="grid min-h-40 place-items-center p-5 text-center text-sm leading-6 text-muted-foreground">
-                      <div>
-                        <FileText className="mx-auto mb-3 size-8 text-primary" />
-                        ไฟล์นี้อาจไม่รองรับการแสดงตัวอย่างในหน้าเว็บ ให้เปิดไฟล์ต้นแบบในแท็บใหม่
-                      </div>
+          {showPracticeWorkspace && (
+            <section
+              data-practice-workspace="true"
+              className="rounded-2xl border border-cyan-200/80 bg-gradient-to-br from-cyan-50 via-background to-emerald-50/80 p-4 shadow-sm"
+            >
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2">
+                    <div className="rounded-xl bg-cyan-100 p-2 text-primary shadow-xs">
+                      <Link2 className="size-5" />
                     </div>
-                  )}
+                    <div>
+                      <h4 className="text-base font-semibold">พื้นที่ปฏิบัติ</h4>
+                      <p className="text-xs text-muted-foreground">แบบฝึกที่ฝังด้วย HTML</p>
+                    </div>
+                  </div>
+                  <Badge className="bg-cyan-600 text-white hover:bg-cyan-600">HTML</Badge>
                 </div>
-              ) : (
-                <div className="rounded-lg border bg-secondary/25 p-4 text-sm leading-6 text-muted-foreground">
-                  ทำงานจากใบงานด้านซ้าย แล้วแนบไฟล์หรือลิงก์ผลงานเมื่อเสร็จ
+                <div className="overflow-hidden rounded-xl border border-cyan-200 bg-background shadow-xs">
+                  <iframe
+                    className="h-[340px] w-full bg-background"
+                    srcDoc={instructionHtml}
+                    title={`พื้นที่ปฏิบัติ ${task.title}`}
+                    sandbox="allow-forms allow-scripts allow-popups allow-downloads"
+                  />
                 </div>
-              )}
-            </div>
-          </section>
+              </div>
+            </section>
+          )}
 
           <form
-            className="grid gap-4 rounded-2xl border border-primary/25 bg-gradient-to-br from-background via-primary/5 to-cyan-50/70 p-4 shadow-sm"
+            className="grid gap-4 rounded-2xl border border-primary/20 bg-background p-4 shadow-sm ring-1 ring-primary/5"
             onSubmit={(event: FormEvent<HTMLFormElement>) => {
               event.preventDefault();
               onSubmit(new FormData(event.currentTarget));
@@ -1896,56 +1893,58 @@ function TaskWorkspacePanel({
             <input type="hidden" name="taskId" value={task.id} />
             {adminPreviewEmail && <input type="hidden" name="learnerEmail" value={adminPreviewEmail} />}
 
-            <div className="flex items-start justify-between gap-3">
-              <div className="flex items-start gap-2">
-                <div className="rounded-xl bg-primary p-2 text-primary-foreground shadow-sm shadow-primary/25">
-                  <Send className="size-4" />
+            <div className="rounded-xl border border-primary/15 bg-gradient-to-r from-primary/10 via-cyan-50 to-emerald-50 p-3">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-start gap-2">
+                  <div className="rounded-xl bg-primary p-2 text-primary-foreground shadow-sm shadow-primary/25">
+                    <Send className="size-4" />
+                  </div>
+                  <div>
+                    <h4 className="text-base font-semibold">ส่งงาน</h4>
+                    <p className="mt-1 text-sm text-muted-foreground">ส่งลิงก์ แนบไฟล์ หรือสรุปขั้นตอนที่ทำ</p>
+                  </div>
                 </div>
-                <div>
-                <h4 className="text-base font-semibold">ส่งงาน</h4>
-                <p className="mt-1 text-sm leading-6 text-muted-foreground">แนบไฟล์ ลิงก์ผลงาน หรือสรุปขั้นตอน</p>
-                </div>
+                <span className={cn("w-fit shrink-0 rounded-full px-2.5 py-1 text-xs font-medium", status.className)}>{status.label}</span>
               </div>
-              <span className={cn("w-fit shrink-0 rounded-full px-2.5 py-1 text-xs font-medium", status.className)}>{status.label}</span>
             </div>
 
-            <div className="grid gap-3 2xl:grid-cols-2">
+            <div className="grid gap-3 rounded-xl border border-sky-200/80 bg-sky-50/60 p-3">
               <label className="grid gap-2 text-sm font-medium">
                 ลิงก์ผลงาน
                 <Input name="submittedLinkUrl" defaultValue={task.submission?.submittedLinkUrl ?? ""} placeholder="https://..." />
               </label>
               <div className="grid gap-2">
-                <label className="grid gap-2 text-sm font-medium">
-                  อัปโหลดไฟล์งาน (เลือกได้หลายไฟล์)
-                  <UploadField
-                    name="submissionFile"
-                    label="อัปโหลดไฟล์งาน"
-                    description="รองรับ PDF, Word, Excel, PowerPoint, ZIP/RAR และรูปภาพ เลือกได้หลายไฟล์"
-                    multiple
-                    accept={learnerUploadAccept}
-                    allowedExtensions={learnerUploadExtensions}
-                    maxBytes={learnerUploadMaxBytes}
-                    onChange={(event) => setSelectedSubmissionFiles(selectedUploadFiles(event.currentTarget.files))}
-                  />
-                  <span className="text-xs font-normal leading-5 text-muted-foreground">
-                    รองรับ PDF, Word, Excel, PowerPoint, ZIP/RAR และรูปภาพ ไฟล์ละไม่เกิน 30 MB
-                  </span>
-                </label>
+                <div className="flex items-center justify-between gap-3 text-sm font-medium">
+                  <span>ไฟล์ผลงาน</span>
+                  <Badge className="bg-sky-600 text-white hover:bg-sky-600">เลือกได้หลายไฟล์</Badge>
+                </div>
+                <UploadField
+                  name="submissionFile"
+                  label="อัปโหลดไฟล์งาน"
+                  description="PDF, Word, Excel, PowerPoint, ZIP/RAR หรือรูปภาพ ไฟล์ละไม่เกิน 30 MB"
+                  multiple
+                  accept={learnerUploadAccept}
+                  allowedExtensions={learnerUploadExtensions}
+                  maxBytes={learnerUploadMaxBytes}
+                  className="border-sky-200 bg-background/80"
+                  data-testid="submission-file-input"
+                  onChange={(event) => setSelectedSubmissionFiles(selectedUploadFiles(event.currentTarget.files))}
+                />
                 <SelectedFileList files={selectedSubmissionFiles} emptyText="ยังไม่ได้เลือกไฟล์งาน" />
               </div>
             </div>
 
-            <label className="grid gap-2 text-sm font-medium">
+            <label className="grid gap-2 rounded-xl border border-amber-200/80 bg-amber-50/50 p-3 text-sm font-medium">
               คำตอบ/ขั้นตอนที่ทำ
               <textarea
                 name="answerText"
-                className="min-h-20 rounded-md border bg-background p-3 text-sm leading-6 [overflow-wrap:anywhere]"
+                className="min-h-24 rounded-md border bg-background p-3 text-sm leading-6 [overflow-wrap:anywhere]"
                 defaultValue={task.submission?.answerText ?? ""}
                 placeholder="สรุปวิธีทำ ปัญหาที่พบ หรือคำตอบตามใบงาน"
               />
             </label>
 
-            <div className="rounded-xl border border-cyan-200/80 bg-cyan-50/70 p-4 shadow-xs">
+            <div className="rounded-xl border border-emerald-200/80 bg-emerald-50/60 p-4 shadow-xs">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <p className="font-medium">หลักฐานการปฏิบัติ</p>
@@ -1961,38 +1960,40 @@ function TaskWorkspacePanel({
                   </Badge>
                 )}
               </div>
-              <div className="mt-4 grid gap-3 2xl:grid-cols-2">
-                <div className="grid gap-2 2xl:col-span-2">
-                  <label className="grid gap-2 text-sm font-medium">
-                    อัปโหลดไฟล์หลักฐาน
-                    <UploadField
-                      name="evidenceFiles"
-                      label="อัปโหลดไฟล์หลักฐาน"
-                      description="แนบภาพหน้าจอ ไฟล์ประกอบ หรือหลักฐานระหว่างปฏิบัติ เลือกได้หลายไฟล์"
-                      multiple
-                      accept={learnerUploadAccept}
-                      allowedExtensions={learnerUploadExtensions}
-                      maxBytes={learnerUploadMaxBytes}
-                      onChange={(event) => setSelectedEvidenceFiles(selectedUploadFiles(event.currentTarget.files))}
-                    />
-                    <span className="text-xs font-normal leading-5 text-muted-foreground">
-                      ใช้แนบภาพหน้าจอ ไฟล์ประกอบ หรือหลักฐานระหว่างปฏิบัติได้หลายไฟล์
-                    </span>
-                  </label>
+              <div className="mt-4 grid gap-3">
+                <div className="grid gap-2">
+                  <div className="flex items-center justify-between gap-3 text-sm font-medium">
+                    <span>ไฟล์หลักฐาน</span>
+                    <Badge className="bg-emerald-600 text-white hover:bg-emerald-600">เลือกได้หลายไฟล์</Badge>
+                  </div>
+                  <UploadField
+                    name="evidenceFiles"
+                    label="อัปโหลดไฟล์หลักฐาน"
+                    description="ภาพหน้าจอ ไฟล์ประกอบ หรือหลักฐานระหว่างปฏิบัติ ไฟล์ละไม่เกิน 30 MB"
+                    multiple
+                    accept={learnerUploadAccept}
+                    allowedExtensions={learnerUploadExtensions}
+                    maxBytes={learnerUploadMaxBytes}
+                    className="border-emerald-200 bg-background/80"
+                    data-testid="evidence-file-input"
+                    onChange={(event) => setSelectedEvidenceFiles(selectedUploadFiles(event.currentTarget.files))}
+                  />
                   <SelectedFileList files={selectedEvidenceFiles} emptyText="ยังไม่ได้เลือกไฟล์หลักฐาน" />
                 </div>
-                <label className="grid gap-2 text-sm font-medium">
-                  ลิงก์หลักฐาน
-                  <Input name="evidenceUrl" placeholder="https://..." />
-                </label>
-                <label className="grid gap-2 text-sm font-medium">
-                  หมายเหตุหลักฐาน
-                  <Input name="evidenceText" placeholder="เช่น ภาพหน้าจอระหว่างทำงาน" />
-                </label>
+                <div className="grid gap-3 2xl:grid-cols-2">
+                  <label className="grid gap-2 text-sm font-medium">
+                    ลิงก์หลักฐาน
+                    <Input name="evidenceUrl" placeholder="https://..." />
+                  </label>
+                  <label className="grid gap-2 text-sm font-medium">
+                    หมายเหตุหลักฐาน
+                    <Input name="evidenceText" placeholder="เช่น ภาพหน้าจอระหว่างทำงาน" />
+                  </label>
+                </div>
               </div>
             </div>
 
-            <label className="grid gap-2 text-sm font-medium">
+            <label className="grid gap-2 rounded-xl border bg-secondary/20 p-3 text-sm font-medium">
               หมายเหตุถึงครู
               <Input name="note" defaultValue={task.submission?.note ?? ""} placeholder="ข้อความเพิ่มเติมถึงผู้ตรวจงาน" />
             </label>
@@ -2072,20 +2073,20 @@ function TaskWorkspacePanel({
 function SelectedFileList({ files, emptyText }: { files: SelectedUploadFile[]; emptyText: string }) {
   if (!files.length) {
     return (
-      <div className="rounded-md border border-dashed bg-secondary/20 px-3 py-2 text-xs text-muted-foreground">
+      <div className="rounded-md border border-dashed bg-background/70 px-3 py-2 text-xs text-muted-foreground">
         {emptyText}
       </div>
     );
   }
 
   return (
-    <div className="grid gap-2 rounded-md border bg-primary/5 p-3">
-      <div className="flex items-center justify-between gap-3 text-xs font-medium text-primary">
+    <div className="grid gap-2 rounded-md border bg-background/85 p-3">
+      <div className="flex items-center justify-between gap-3 text-xs font-medium text-emerald-700">
         <span>ไฟล์ที่เลือก {files.length} ไฟล์</span>
-        <span>พร้อมอัปโหลดเมื่อกดส่งงาน</span>
+        <span>พร้อมส่ง</span>
       </div>
       {files.map((file, index) => (
-        <div key={`${file.name}-${file.size}-${index}`} className="flex items-center justify-between gap-3 rounded-md bg-background px-3 py-2 text-xs">
+        <div key={`${file.name}-${file.size}-${index}`} className="flex items-center justify-between gap-3 rounded-md bg-secondary/35 px-3 py-2 text-xs">
           <span className="min-w-0 truncate">{file.name}</span>
           <span className="shrink-0 text-muted-foreground">{formatFileSize(file.size)}</span>
         </div>

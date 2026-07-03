@@ -127,6 +127,7 @@ export async function saveCertificateTemplateAction(formData: FormData) {
     issuerName: text(formData, "issuerName", "วิทยาลัยสารพัดช่างสุรินทร์"),
     signerName: text(formData, "signerName"),
     signerPosition: text(formData, "signerPosition", "ผู้อำนวยการวิทยาลัย"),
+    layoutConfigJson: text(formData, "layoutConfigJson"),
     status: "active",
   });
 
