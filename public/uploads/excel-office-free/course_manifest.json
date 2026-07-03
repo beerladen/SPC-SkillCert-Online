@@ -1,0 +1,349 @@
+{
+  "course": {
+    "title": "โปรแกรม Microsoft Excel ในสำนักงาน",
+    "slug": "microsoft-excel-office",
+    "instructorName": "นายธารา แสงเพ็ชร",
+    "registrationFee": 0,
+    "durationMinutes": 1080,
+    "coverImageUrl": "/uploads/excel-office-free/covers/excel-office-cover.png"
+  },
+  "worksheets": [
+    {
+      "order": 1,
+      "title": "ตั้งค่าเวิร์กบุ๊ก ชีต แถว คอลัมน์ และรูปแบบเซลล์",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_01.pdf"
+    },
+    {
+      "order": 2,
+      "title": "ป้อนข้อมูล จัดรูปแบบตาราง และบันทึกไฟล์อย่างเป็นระบบ",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_02.pdf"
+    },
+    {
+      "order": 3,
+      "title": "ใช้สูตรพื้นฐาน บวก ลบ คูณ หาร และ AutoFill",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_03.pdf"
+    },
+    {
+      "order": 4,
+      "title": "ใช้ฟังก์ชัน SUM, AVERAGE, MIN, MAX, COUNT",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_04.pdf"
+    },
+    {
+      "order": 5,
+      "title": "จัดรูปแบบตัวเลข วันที่ สกุลเงิน และเปอร์เซ็นต์",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_05.pdf"
+    },
+    {
+      "order": 6,
+      "title": "สร้างตารางข้อมูลรายรับรายจ่ายอย่างง่าย",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_06.pdf"
+    },
+    {
+      "order": 7,
+      "title": "ใช้ Relative และ Absolute Reference ในสูตร",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_07.pdf"
+    },
+    {
+      "order": 8,
+      "title": "ใช้ IF สำหรับตัดสินเงื่อนไขเบื้องต้น",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_08.pdf"
+    },
+    {
+      "order": 9,
+      "title": "ใช้ COUNTIF และ SUMIF สรุปข้อมูลตามเงื่อนไข",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_09.pdf"
+    },
+    {
+      "order": 10,
+      "title": "ใช้ VLOOKUP/XLOOKUP เพื่อค้นหาข้อมูล",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_10.pdf"
+    },
+    {
+      "order": 11,
+      "title": "จัดเรียงข้อมูลและกรองข้อมูลด้วย Filter",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_11.pdf"
+    },
+    {
+      "order": 12,
+      "title": "ใช้ Conditional Formatting เน้นข้อมูลสำคัญ",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_12.pdf"
+    },
+    {
+      "order": 13,
+      "title": "สร้างกราฟแท่ง กราฟเส้น และกราฟวงกลม",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_13.pdf"
+    },
+    {
+      "order": 14,
+      "title": "จัดหน้าและเตรียมพิมพ์รายงานจาก Excel",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_14.pdf"
+    },
+    {
+      "order": 15,
+      "title": "สร้างตารางสรุปคะแนนหรือยอดขาย",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_15.pdf"
+    },
+    {
+      "order": 16,
+      "title": "ใช้ Data Validation สร้างรายการเลือกข้อมูล",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_16.pdf"
+    },
+    {
+      "order": 17,
+      "title": "ใช้ฟังก์ชันข้อความ LEFT, RIGHT, MID, CONCAT",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_17.pdf"
+    },
+    {
+      "order": 18,
+      "title": "ใช้ฟังก์ชันวันที่และเวลาในงานสำนักงาน",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_18.pdf"
+    },
+    {
+      "order": 19,
+      "title": "สร้าง PivotTable เพื่อสรุปข้อมูล",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_19.pdf"
+    },
+    {
+      "order": 20,
+      "title": "สร้าง PivotChart จากข้อมูลสรุป",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_20.pdf"
+    },
+    {
+      "order": 21,
+      "title": "สร้าง Dashboard สรุปผลด้วยกราฟและตัวชี้วัด",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_21.pdf"
+    },
+    {
+      "order": 22,
+      "title": "ป้องกันชีตและกำหนดสิทธิ์การแก้ไข",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_22.pdf"
+    },
+    {
+      "order": 23,
+      "title": "ตรวจสอบสูตรและแก้ไขข้อผิดพลาดในตาราง",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_23.pdf"
+    },
+    {
+      "order": 24,
+      "title": "นำเข้าข้อมูลและจัดระเบียบข้อมูลก่อนวิเคราะห์",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_24.pdf"
+    },
+    {
+      "order": 25,
+      "title": "สร้างแม่แบบแฟ้มงาน Excel สำหรับงานสำนักงาน",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_25.pdf"
+    },
+    {
+      "order": 26,
+      "title": "เชื่อมโยงข้อมูลระหว่างชีตและสรุปผลหลายตาราง",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_26.pdf"
+    },
+    {
+      "order": 27,
+      "title": "งานสอบปฏิบัติ Excel: ตารางคำนวณและสรุปผล",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_27.pdf"
+    },
+    {
+      "order": 28,
+      "title": "งานสอบปฏิบัติ Excel: PivotTable และกราฟสรุป",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_28.pdf"
+    },
+    {
+      "order": 29,
+      "title": "งานสอบปฏิบัติ Excel: Dashboard สำนักงาน",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_29.pdf"
+    },
+    {
+      "order": 30,
+      "title": "ชิ้นงานสรุป Excel: แฟ้มข้อมูลพร้อมรายงานประเมิน",
+      "fileUrl": "/files/excel_pdf/excel_worksheet_30.pdf"
+    }
+  ],
+  "assessments": {
+    "preTestCsv": "/uploads/excel-office-free/assessments/excel-pre-test-20-questions.csv",
+    "postTestCsv": "/uploads/excel-office-free/assessments/excel-post-test-20-questions.csv"
+  },
+  "questions": [
+    {
+      "question": "ไฟล์งานหลักของ Microsoft Excel เรียกว่าอะไร",
+      "choice_a": "เอกสาร",
+      "choice_b": "เวิร์กบุ๊ก",
+      "choice_c": "สไลด์",
+      "choice_d": "ฐานข้อมูล",
+      "answer": "ข",
+      "explanation": "ไฟล์ Excel เรียกว่าเวิร์กบุ๊ก และภายในประกอบด้วยเวิร์กชีตหลายแผ่น"
+    },
+    {
+      "question": "ตำแหน่งที่เกิดจากการตัดกันของแถวและคอลัมน์เรียกว่าอะไร",
+      "choice_a": "เซลล์",
+      "choice_b": "ชีต",
+      "choice_c": "แท็บ",
+      "choice_d": "ริบบอน",
+      "answer": "ก",
+      "explanation": "เซลล์คือช่องข้อมูลที่เกิดจากแถวและคอลัมน์ตัดกัน เช่น A1"
+    },
+    {
+      "question": "การเขียนสูตรใน Excel ต้องเริ่มต้นด้วยสัญลักษณ์ใด",
+      "choice_a": "#",
+      "choice_b": "@",
+      "choice_c": "=",
+      "choice_d": "$",
+      "answer": "ค",
+      "explanation": "สูตรใน Excel เริ่มต้นด้วยเครื่องหมายเท่ากับ เช่น =SUM(A1:A5)"
+    },
+    {
+      "question": "ฟังก์ชันใดใช้หาผลรวมของตัวเลข",
+      "choice_a": "SUM",
+      "choice_b": "COUNT",
+      "choice_c": "MAX",
+      "choice_d": "TEXT",
+      "answer": "ก",
+      "explanation": "SUM ใช้รวมค่าตัวเลขในช่วงเซลล์ที่กำหนด"
+    },
+    {
+      "question": "ฟังก์ชัน AVERAGE ใช้สำหรับงานใด",
+      "choice_a": "หาค่ามากที่สุด",
+      "choice_b": "หาค่าเฉลี่ย",
+      "choice_c": "นับจำนวนข้อความ",
+      "choice_d": "รวมข้อความ",
+      "answer": "ข",
+      "explanation": "AVERAGE ใช้คำนวณค่าเฉลี่ยของข้อมูลตัวเลข"
+    },
+    {
+      "question": "การอ้างอิงแบบ $A$1 มีความหมายอย่างไร",
+      "choice_a": "อ้างอิงแบบสัมพัทธ์",
+      "choice_b": "อ้างอิงแบบผสมเฉพาะแถว",
+      "choice_c": "อ้างอิงแบบคงที่ทั้งคอลัมน์และแถว",
+      "choice_d": "อ้างอิงไปยังชีตอื่นเท่านั้น",
+      "answer": "ค",
+      "explanation": "เครื่องหมาย $ ล็อกทั้งคอลัมน์ A และแถว 1 ไม่ให้เปลี่ยนเมื่อคัดลอกสูตร"
+    },
+    {
+      "question": "เครื่องมือ AutoFill มีประโยชน์หลักในข้อใด",
+      "choice_a": "เติมข้อมูลหรือคัดลอกสูตรต่อเนื่องอย่างรวดเร็ว",
+      "choice_b": "ป้องกันไฟล์ด้วยรหัสผ่าน",
+      "choice_c": "ลบข้อมูลซ้ำทุกแถว",
+      "choice_d": "สร้างไฟล์ PDF อัตโนมัติ",
+      "answer": "ก",
+      "explanation": "AutoFill ช่วยลากเติมลำดับข้อมูลหรือคัดลอกสูตรไปยังเซลล์ถัดไป"
+    },
+    {
+      "question": "หากต้องการแสดงค่า 0.25 เป็น 25% ควรใช้รูปแบบใด",
+      "choice_a": "Currency",
+      "choice_b": "Percentage",
+      "choice_c": "Date",
+      "choice_d": "Text",
+      "answer": "ข",
+      "explanation": "รูปแบบ Percentage ใช้แสดงค่าทศนิยมเป็นเปอร์เซ็นต์"
+    },
+    {
+      "question": "คำสั่ง Filter ใช้เพื่ออะไร",
+      "choice_a": "แสดงเฉพาะข้อมูลที่ตรงเงื่อนไข",
+      "choice_b": "รวมหลายไฟล์เข้าด้วยกัน",
+      "choice_c": "เปลี่ยนภาษาเมนู",
+      "choice_d": "สร้างสูตรใหม่อัตโนมัติ",
+      "answer": "ก",
+      "explanation": "Filter ใช้กรองข้อมูลให้เห็นเฉพาะรายการที่ต้องการ"
+    },
+    {
+      "question": "ฟังก์ชัน IF เหมาะกับงานใด",
+      "choice_a": "รวมข้อมูลทุกแถว",
+      "choice_b": "ตัดสินผลลัพธ์ตามเงื่อนไข",
+      "choice_c": "ค้นหารูปภาพในไฟล์",
+      "choice_d": "จัดหน้าเอกสาร",
+      "answer": "ข",
+      "explanation": "IF ใช้ตรวจเงื่อนไขแล้วคืนค่าที่ต่างกันตามผลจริงหรือเท็จ"
+    },
+    {
+      "question": "COUNTIF ใช้สำหรับข้อใด",
+      "choice_a": "นับจำนวนข้อมูลที่ตรงเงื่อนไข",
+      "choice_b": "รวมข้อมูลที่ตรงเงื่อนไข",
+      "choice_c": "หาค่าเฉลี่ยทั้งหมด",
+      "choice_d": "ตัดข้อความด้านซ้าย",
+      "answer": "ก",
+      "explanation": "COUNTIF ใช้นับจำนวนเซลล์ในช่วงข้อมูลที่ตรงตามเงื่อนไข"
+    },
+    {
+      "question": "SUMIF แตกต่างจาก SUM อย่างไร",
+      "choice_a": "SUMIF รวมเฉพาะค่าที่ตรงเงื่อนไข",
+      "choice_b": "SUMIF ใช้ได้กับข้อความเท่านั้น",
+      "choice_c": "SUMIF ใช้สร้างกราฟ",
+      "choice_d": "SUMIF ใช้ล็อกเซลล์",
+      "answer": "ก",
+      "explanation": "SUMIF ใช้รวมค่าตามเงื่อนไข เช่น รวมยอดขายเฉพาะแผนก"
+    },
+    {
+      "question": "VLOOKUP หรือ XLOOKUP ใช้เพื่ออะไร",
+      "choice_a": "ค้นหาและดึงข้อมูลจากตารางอ้างอิง",
+      "choice_b": "จัดเรียงข้อมูลจากมากไปน้อยเท่านั้น",
+      "choice_c": "สร้างหัวกระดาษ",
+      "choice_d": "แปลงไฟล์เป็นรูปภาพ",
+      "answer": "ก",
+      "explanation": "ฟังก์ชันกลุ่ม Lookup ใช้ค้นหาค่าแล้วดึงข้อมูลที่สัมพันธ์กันกลับมา"
+    },
+    {
+      "question": "Data Validation เหมาะกับการใช้งานใด",
+      "choice_a": "จำกัดชนิดข้อมูลหรือสร้างรายการให้เลือก",
+      "choice_b": "ลบสูตรทั้งหมด",
+      "choice_c": "เพิ่มความสว่างหน้าจอ",
+      "choice_d": "แทรกวิดีโอในชีต",
+      "answer": "ก",
+      "explanation": "Data Validation ช่วยควบคุมข้อมูลที่ป้อน เช่น ทำรายการเลือกแผนก"
+    },
+    {
+      "question": "Conditional Formatting ใช้เพื่ออะไร",
+      "choice_a": "จัดรูปแบบเซลล์ตามเงื่อนไข",
+      "choice_b": "ส่งอีเมลจาก Excel",
+      "choice_c": "เปลี่ยนชื่อไฟล์",
+      "choice_d": "สำรองข้อมูลบนคลาวด์",
+      "answer": "ก",
+      "explanation": "Conditional Formatting ช่วยเน้นค่าที่สำคัญ เช่น ยอดต่ำกว่าเป้า"
+    },
+    {
+      "question": "กราฟชนิดใดเหมาะกับการเปรียบเทียบยอดขายของหลายแผนก",
+      "choice_a": "กราฟแท่ง",
+      "choice_b": "รูปภาพ",
+      "choice_c": "กล่องข้อความ",
+      "choice_d": "SmartArt เท่านั้น",
+      "answer": "ก",
+      "explanation": "กราฟแท่งเหมาะกับการเปรียบเทียบค่าระหว่างหมวดหมู่"
+    },
+    {
+      "question": "PivotTable เหมาะกับงานลักษณะใด",
+      "choice_a": "สรุปและวิเคราะห์ข้อมูลจำนวนมากแบบยืดหยุ่น",
+      "choice_b": "พิมพ์จดหมายเวียน",
+      "choice_c": "วาดรูปประกอบ",
+      "choice_d": "ตัดต่อวิดีโอ",
+      "answer": "ก",
+      "explanation": "PivotTable ใช้สรุปข้อมูลตามมิติ เช่น แผนก เดือน หรือสินค้า"
+    },
+    {
+      "question": "ก่อนพิมพ์รายงาน Excel ควรตรวจสิ่งใด",
+      "choice_a": "ขอบกระดาษ พื้นที่พิมพ์ และการจัดหน้า",
+      "choice_b": "ความเร็วอินเทอร์เน็ตเท่านั้น",
+      "choice_c": "สีเมาส์และคีย์บอร์ด",
+      "choice_d": "ชื่อโปรแกรมอีเมล",
+      "answer": "ก",
+      "explanation": "Page Setup และ Print Area ช่วยให้รายงานพิมพ์ออกมาเป็นระเบียบ"
+    },
+    {
+      "question": "การ Protect Sheet มีประโยชน์ในข้อใด",
+      "choice_a": "ป้องกันการแก้ไขเซลล์สำคัญโดยไม่ตั้งใจ",
+      "choice_b": "เพิ่มจำนวนแถวในชีต",
+      "choice_c": "แปลงตัวเลขเป็นรูปภาพ",
+      "choice_d": "ลบข้อมูลที่ซ้ำกันเสมอ",
+      "answer": "ก",
+      "explanation": "Protect Sheet ช่วยควบคุมส่วนที่ผู้ใช้แก้ไขได้และลดความผิดพลาด"
+    },
+    {
+      "question": "การตั้งชื่อไฟล์ Excel ที่ดีควรเป็นอย่างไร",
+      "choice_a": "สื่อความหมาย มีวันที่หรือเวอร์ชัน และค้นหาได้ง่าย",
+      "choice_b": "ใช้ชื่อว่า Book1 เสมอ",
+      "choice_c": "ใช้สัญลักษณ์สุ่มให้มากที่สุด",
+      "choice_d": "ไม่ต้องบันทึกชื่อไฟล์",
+      "answer": "ก",
+      "explanation": "ชื่อไฟล์ที่ชัดเจนช่วยจัดเก็บ ส่งงาน และตรวจสอบย้อนหลังได้ง่าย"
+    }
+  ],
+  "cover": "/uploads/excel-office-free/covers/excel-office-cover.png"
+}

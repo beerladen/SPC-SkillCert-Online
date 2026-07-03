@@ -1,0 +1,29 @@
+.env*
+!.env.example
+.next/
+.next-dev-logs/
+.codex-logs/
+node_modules/
+dist/
+coverage/
+tmp/
+backups/
+__MACOSX/
+.DS_Store
+*.log
+*.tsbuildinfo
+
+# Local/private runtime data
+storage/uploads/
+public/uploads/payments/
+public/uploads/evidence/
+public/uploads/learning-submissions/
+public/uploads/instructor-signatures/
+public/uploads/certificates/signatures/
+
+# Local database exports and imported production snapshots
+database/backups/
+database/dumps/
+*.sql.gz
+*.sql.zip
+*.dump

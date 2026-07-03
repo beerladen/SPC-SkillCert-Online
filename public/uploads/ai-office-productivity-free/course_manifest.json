@@ -1,0 +1,894 @@
+{
+  "course": {
+    "title": "การใช้ AI ช่วยงานเอกสารและงานสำนักงานดิจิทัล",
+    "slug": "ai-office-productivity-12h-free",
+    "categorySlug": "technology",
+    "categoryName": "คอมพิวเตอร์และเทคโนโลยี",
+    "instructorName": "นายธารา แสงเพ็ชร",
+    "shortDescription": "หลักสูตรฟรี 12 ชั่วโมง ฝึกใช้ AI ช่วยร่างเอกสาร สรุปข้อมูล วิเคราะห์ตาราง และสร้างชุดงานสำนักงานที่นำไปใช้ได้จริง",
+    "description": "หลักสูตรนี้ออกแบบสำหรับผู้เริ่มต้นที่ต้องการใช้ AI ช่วยงานสำนักงานอย่างปลอดภัยและเป็นระบบ ผู้เรียนจะได้ฝึกเขียน Prompt สรุปและปรับภาษาเอกสาร วิเคราะห์ข้อมูลจากตาราง สร้างโครงสไลด์ และจัดทำชิ้นงานสุดท้ายพร้อมหลักฐานการใช้ AI",
+    "coverImageUrl": "/uploads/ai-office-productivity-free/covers/ai-office-productivity-cover.png",
+    "registrationFee": 0,
+    "durationMinutes": 720,
+    "capacity": 100,
+    "format": "online",
+    "level": "beginner",
+    "status": "open"
+  },
+  "outcomes": [
+    "ใช้ AI ช่วยร่างและปรับปรุงเอกสารสำนักงานได้",
+    "เขียน Prompt อย่างมีโครงสร้างและตรวจสอบผลลัพธ์ได้",
+    "ใช้ AI ช่วยสรุปเอกสารและวิเคราะห์ข้อมูลตารางเบื้องต้นได้",
+    "สร้างชุดงานสำนักงานดิจิทัลพร้อมหลักฐานการใช้ AI อย่างปลอดภัย"
+  ],
+  "requirements": [
+    "มีคอมพิวเตอร์หรือแท็บเล็ตที่เชื่อมต่ออินเทอร์เน็ต",
+    "มีบัญชีอีเมลและสามารถใช้งานเว็บเบราว์เซอร์พื้นฐานได้",
+    "ไม่จำเป็นต้องมีพื้นฐาน AI หรือการเขียนโปรแกรม"
+  ],
+  "audience": [
+    "เจ้าหน้าที่ธุรการ ครู บุคลากรสำนักงาน และผู้ประกอบการรายย่อย",
+    "นักเรียน นักศึกษา หรือผู้สนใจเพิ่มทักษะดิจิทัล",
+    "ผู้ที่ต้องการใช้ AI ช่วยลดเวลางานเอกสารและรายงาน"
+  ],
+  "sections": [
+    {
+      "code": "AIO-01",
+      "title": "พื้นฐาน AI และความปลอดภัย",
+      "description": "เข้าใจบทบาท AI ข้อจำกัด และการใช้ข้อมูลอย่างปลอดภัย",
+      "objectives": "อธิบายงานที่ AI ช่วยได้ และใช้ checklist ความปลอดภัยก่อนส่งข้อมูลเข้า AI",
+      "competency": "ใช้ AI อย่างรับผิดชอบและตรวจสอบผลลัพธ์ได้",
+      "hours": 3,
+      "sortOrder": 1
+    },
+    {
+      "code": "AIO-02",
+      "title": "Prompt สำหรับเอกสารและการสรุป",
+      "description": "ฝึกเขียน Prompt เพื่อร่างเอกสาร สรุปข้อความ และปรับภาษา",
+      "objectives": "สร้าง Prompt ที่มีบทบาท งาน รูปแบบ และข้อจำกัดชัดเจน",
+      "competency": "ผลิตเอกสารสำนักงานจาก AI โดยมีการตรวจทาน",
+      "hours": 3,
+      "sortOrder": 2
+    },
+    {
+      "code": "AIO-03",
+      "title": "AI กับตารางข้อมูลและรายงาน",
+      "description": "ใช้ AI ช่วยอ่านข้อมูล สรุปแนวโน้ม และเขียนรายงาน",
+      "objectives": "วิเคราะห์ข้อมูลตัวอย่างและเขียนรายงานสั้นอิงตัวเลขจริง",
+      "competency": "อธิบาย insight จากข้อมูลและเสนอแนวทางปรับปรุง",
+      "hours": 3,
+      "sortOrder": 3
+    },
+    {
+      "code": "AIO-04",
+      "title": "สร้างชุดงานสำนักงานดิจิทัล",
+      "description": "วางโครงสไลด์ สร้างสื่อ และจัดทำชิ้นงานสุดท้าย",
+      "objectives": "รวมทักษะ AI เพื่อสร้างชุดงานสำนักงานครบกระบวนการ",
+      "competency": "ส่งมอบชิ้นงานพร้อมหลักฐาน Prompt และการตรวจคุณภาพ",
+      "hours": 3,
+      "sortOrder": 4
+    }
+  ],
+  "lessons": [
+    {
+      "section": "AIO-01",
+      "title": "รู้จัก AI สำหรับงานสำนักงาน",
+      "description": "ภาพรวมการใช้ AI เป็นผู้ช่วยงานเอกสาร สรุปข้อมูล และสร้างสื่อสำนักงาน",
+      "content": "ดูคลิป อ่านใบความรู้หน่วยที่ 1 แล้วทำ Pre-test เพื่อวัดพื้นฐานก่อนเรียน",
+      "duration": 60,
+      "video": "/uploads/ai-office-productivity-free/videos/lesson-01-ai-overview.mp4",
+      "resources": [
+        {
+          "title": "ใบความรู้หน่วยที่ 1",
+          "type": "pdf",
+          "url": "/uploads/ai-office-productivity-free/knowledge/unit-01-ai-basics-safety.pdf",
+          "file": "unit-01-ai-basics-safety.pdf"
+        }
+      ]
+    },
+    {
+      "section": "AIO-01",
+      "title": "ความปลอดภัยข้อมูลและจริยธรรมการใช้ AI",
+      "description": "ฝึกคิดก่อนส่งข้อมูลเข้า AI และตรวจสอบผลลัพธ์อย่างรับผิดชอบ",
+      "content": "ใช้ checklist ความปลอดภัยและทดลองทำข้อมูลให้ไม่ระบุตัวตน",
+      "duration": 60,
+      "video": "/uploads/ai-office-productivity-free/videos/lesson-02-ai-safety.mp4",
+      "resources": [
+        {
+          "title": "Prompt Template สำหรับงานสำนักงาน",
+          "type": "doc",
+          "url": "/uploads/ai-office-productivity-free/samples/prompt-template-office-ai.txt",
+          "file": "prompt-template-office-ai.txt"
+        }
+      ]
+    },
+    {
+      "section": "AIO-02",
+      "title": "สูตร Prompt สำหรับเอกสารสำนักงาน",
+      "description": "ใช้ Role-Task-Format-Constraint เพื่อร่างอีเมล ประกาศ และบันทึกข้อความ",
+      "content": "ฝึกเขียน Prompt หลายเวอร์ชันและเปรียบเทียบผลลัพธ์",
+      "duration": 90,
+      "video": "/uploads/ai-office-productivity-free/videos/lesson-03-prompt-basics.mp4",
+      "resources": [
+        {
+          "title": "ใบความรู้หน่วยที่ 2",
+          "type": "pdf",
+          "url": "/uploads/ai-office-productivity-free/knowledge/unit-02-prompt-document.pdf",
+          "file": "unit-02-prompt-document.pdf"
+        }
+      ]
+    },
+    {
+      "section": "AIO-02",
+      "title": "สรุปเอกสารและปรับภาษาให้เหมาะกับผู้รับ",
+      "description": "ใช้ AI สรุปเอกสารยาว ปรับระดับภาษา และตรวจข้อมูลสำคัญ",
+      "content": "ใช้ไฟล์ตัวอย่างเพื่อทำใบงานสรุปเอกสารและปรับภาษา",
+      "duration": 90,
+      "video": "/uploads/ai-office-productivity-free/videos/lesson-04-document-summary.mp4",
+      "resources": [
+        {
+          "title": "ไฟล์ข้อความตัวอย่างสำหรับสรุป",
+          "type": "doc",
+          "url": "/uploads/ai-office-productivity-free/samples/sample-source-document.txt",
+          "file": "sample-source-document.txt"
+        }
+      ]
+    },
+    {
+      "section": "AIO-03",
+      "title": "ให้ AI ช่วยอ่านตารางและหา Insight",
+      "description": "สรุปแนวโน้มจากไฟล์ CSV และเขียนข้อเสนอแนะที่อิงข้อมูล",
+      "content": "ดาวน์โหลดไฟล์ข้อมูลตัวอย่างแล้วทำแบบฝึกวิเคราะห์ข้อมูล",
+      "duration": 90,
+      "video": "/uploads/ai-office-productivity-free/videos/lesson-05-data-analysis.mp4",
+      "resources": [
+        {
+          "title": "ใบความรู้หน่วยที่ 3",
+          "type": "pdf",
+          "url": "/uploads/ai-office-productivity-free/knowledge/unit-03-ai-data-report.pdf",
+          "file": "unit-03-ai-data-report.pdf"
+        },
+        {
+          "title": "ไฟล์ข้อมูลตัวอย่าง CSV",
+          "type": "worksheet",
+          "url": "/uploads/ai-office-productivity-free/samples/office-training-data.csv",
+          "file": "office-training-data.csv"
+        }
+      ]
+    },
+    {
+      "section": "AIO-03",
+      "title": "สูตร Excel เบื้องต้นและรายงาน 1 หน้า",
+      "description": "ใช้ AI ช่วยอธิบายสูตร ตรวจแนวโน้ม และสร้างรายงานสำนักงาน",
+      "content": "ฝึกตั้งคำถามกับข้อมูลและจัดรายงานให้หัวหน้างานอ่านง่าย",
+      "duration": 90,
+      "video": "/uploads/ai-office-productivity-free/videos/lesson-06-excel-formulas.mp4",
+      "resources": [
+        {
+          "title": "แบบฝึกวิเคราะห์ข้อมูล",
+          "type": "pdf",
+          "url": "/uploads/ai-office-productivity-free/worksheets/practice-01-data-report.pdf",
+          "file": "practice-01-data-report.pdf"
+        }
+      ]
+    },
+    {
+      "section": "AIO-04",
+      "title": "วางโครงสไลด์และสื่อสำนักงานด้วย AI",
+      "description": "ใช้ AI ช่วยวางโครงสไลด์ ประกาศ และข้อความประชาสัมพันธ์",
+      "content": "ฝึกสร้างโครงสไลด์ 5-7 หน้าเพื่อเตรียมชิ้นงานสุดท้าย",
+      "duration": 120,
+      "video": "/uploads/ai-office-productivity-free/videos/lesson-07-slide-outline.mp4",
+      "resources": [
+        {
+          "title": "ใบความรู้หน่วยที่ 4",
+          "type": "pdf",
+          "url": "/uploads/ai-office-productivity-free/knowledge/unit-04-final-office-package.pdf",
+          "file": "unit-04-final-office-package.pdf"
+        }
+      ]
+    },
+    {
+      "section": "AIO-04",
+      "title": "จัดทำชิ้นงานสุดท้ายและตรวจคุณภาพ",
+      "description": "รวมเอกสาร รายงานข้อมูล โครงสไลด์ และหลักฐาน Prompt เป็นชุดส่งงาน",
+      "content": "ทำชิ้นงานสุดท้าย ตรวจ checklist และทำ Post-test เพื่อจบหลักสูตร",
+      "duration": 120,
+      "video": "/uploads/ai-office-productivity-free/videos/lesson-08-final-project.mp4",
+      "resources": [
+        {
+          "title": "โจทย์ชิ้นงานสุดท้าย",
+          "type": "pdf",
+          "url": "/uploads/ai-office-productivity-free/worksheets/final-project-office-ai-package.pdf",
+          "file": "final-project-office-ai-package.pdf"
+        }
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "key": "pre",
+      "title": "แบบทดสอบก่อนเรียน",
+      "type": "pre_test",
+      "description": "วัดพื้นฐานก่อนเรียน ไม่นำคะแนนไปตัดสินผ่านหลักสูตร",
+      "passingScore": 0,
+      "maxAttempts": 1,
+      "timeLimit": 15,
+      "questionLimit": 10,
+      "required": true,
+      "countsTowardCompletion": false,
+      "showAnswers": "never",
+      "sortOrder": 1,
+      "questions": [
+        {
+          "question": "ข้อใดเป็นการใช้ AI ที่เหมาะสมที่สุดในงานสำนักงาน",
+          "choice_a": "ส่งข้อมูลบัตรประชาชนให้ AI ตรวจ",
+          "choice_b": "ให้ AI ช่วยร่างข้อความแล้วมนุษย์ตรวจทาน",
+          "choice_c": "คัดลอกคำตอบ AI ส่งทันที",
+          "choice_d": "ใช้ AI แทนการตัดสินใจทั้งหมด",
+          "answer": "ข",
+          "score": 1,
+          "explanation": "AI ควรเป็นผู้ช่วย มนุษย์ยังต้องตรวจสอบความถูกต้องและความเหมาะสม"
+        },
+        {
+          "question": "Prompt ที่ดีควรมีองค์ประกอบใด",
+          "choice_a": "บทบาท งาน บริบท รูปแบบผลลัพธ์",
+          "choice_b": "คำสั่งสั้นที่สุดเท่านั้น",
+          "choice_c": "ข้อมูลส่วนตัวให้มากที่สุด",
+          "choice_d": "คำถามกว้าง ๆ โดยไม่ระบุเป้าหมาย",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "Prompt ที่ชัดเจนช่วยให้ AI สร้างคำตอบตรงงานมากขึ้น"
+        },
+        {
+          "question": "ข้อมูลใดไม่ควรใส่ใน AI สาธารณะ",
+          "choice_a": "หัวข้อเอกสารทั่วไป",
+          "choice_b": "รูปแบบรายงานที่ต้องการ",
+          "choice_c": "เลขบัตรประชาชนและข้อมูลลูกค้า",
+          "choice_d": "ตัวอย่างข้อความที่ไม่ระบุตัวตน",
+          "answer": "ค",
+          "score": 1,
+          "explanation": "ข้อมูลส่วนบุคคลและข้อมูลลับต้องหลีกเลี่ยงหรือทำให้ไม่ระบุตัวตนก่อน"
+        },
+        {
+          "question": "การตรวจสอบคำตอบจาก AI ควรทำอย่างไร",
+          "choice_a": "เชื่อทั้งหมด",
+          "choice_b": "ตรวจแหล่งอ้างอิงและเทียบกับบริบทจริง",
+          "choice_c": "ดูแค่คำตอบยาวหรือสั้น",
+          "choice_d": "ส่งต่อทันทีถ้าภาษาอ่านดี",
+          "answer": "ข",
+          "score": 1,
+          "explanation": "AI อาจให้ข้อมูลผิดหรือไม่เหมาะกับบริบท จึงต้องตรวจสอบ"
+        },
+        {
+          "question": "การให้ AI ช่วยสรุปเอกสาร ควรระบุอะไรเพิ่ม",
+          "choice_a": "จำนวนบรรทัดหรือรูปแบบสรุป",
+          "choice_b": "รหัสผ่านไฟล์",
+          "choice_c": "ข้อมูลลับทั้งหมด",
+          "choice_d": "ไม่ต้องระบุอะไร",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "การกำหนดรูปแบบ เช่น bullet 5 ข้อ ช่วยให้ผลลัพธ์นำไปใช้ได้ง่าย"
+        },
+        {
+          "question": "ข้อใดเป็นผลลัพธ์ที่ควรขอจาก AI เมื่อทำรายงานจากตาราง",
+          "choice_a": "สรุปแนวโน้มและข้อสังเกต",
+          "choice_b": "เดาตัวเลขที่ไม่มีในข้อมูล",
+          "choice_c": "ลบข้อมูลผิดพลาดเองโดยไม่แจ้ง",
+          "choice_d": "ยืนยันว่าทุกอย่างถูกต้องแน่นอน",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "AI ช่วยสรุปแนวโน้มได้ แต่ต้องไม่แต่งข้อมูลเพิ่ม"
+        },
+        {
+          "question": "เมื่อ AI สร้างข้อความราชการ ควรทำสิ่งใดก่อนใช้จริง",
+          "choice_a": "ตรวจคำขึ้นต้น ลงท้าย และความสุภาพ",
+          "choice_b": "ส่งทันที",
+          "choice_c": "ลบชื่อผู้รับทั้งหมด",
+          "choice_d": "ทำให้ยาวที่สุด",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "เอกสารราชการต้องตรวจรูปแบบและระดับภาษาให้เหมาะสม"
+        },
+        {
+          "question": "Prompt Template มีประโยชน์อย่างไร",
+          "choice_a": "ทำให้ทำงานซ้ำได้เป็นระบบ",
+          "choice_b": "ทำให้ไม่ต้องตรวจงาน",
+          "choice_c": "ใช้แทนข้อมูลจริงทั้งหมด",
+          "choice_d": "ทำให้ AI ไม่เคยผิด",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "Template ช่วยลดเวลาตั้งคำสั่งและควบคุมคุณภาพงานซ้ำ ๆ"
+        },
+        {
+          "question": "ข้อใดคือหลักฐานประกอบใบงานที่ดี",
+          "choice_a": "ภาพหน้าจอ Prompt และผลลัพธ์ก่อนปรับแก้",
+          "choice_b": "ข้อความสั้นว่าเสร็จแล้ว",
+          "choice_c": "ไฟล์เปล่า",
+          "choice_d": "ลิงก์ที่เปิดไม่ได้",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "หลักฐานช่วยให้ครูเห็นกระบวนการคิดและการปรับแก้"
+        },
+        {
+          "question": "เป้าหมายหลักของหลักสูตรนี้คืออะไร",
+          "choice_a": "ใช้ AI อย่างปลอดภัยและสร้างงานสำนักงานได้จริง",
+          "choice_b": "เรียนเขียนโปรแกรม AI ขั้นสูง",
+          "choice_c": "สร้างโมเดล AI จากศูนย์",
+          "choice_d": "สอบใบอนุญาตวิศวกร",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "หลักสูตรเน้นงานเอกสาร ข้อมูล และสื่อสำนักงานสำหรับผู้เริ่มต้น"
+        }
+      ],
+      "csv": "/uploads/ai-office-productivity-free/assessments/pre-test-10-questions.csv"
+    },
+    {
+      "key": "quiz",
+      "title": "Quiz หน่วยที่ 2: Prompt และเอกสาร",
+      "type": "quiz",
+      "description": "ตรวจความเข้าใจเรื่อง Prompt และการสรุปเอกสาร",
+      "passingScore": 70,
+      "maxAttempts": 2,
+      "timeLimit": 20,
+      "questionLimit": 10,
+      "required": true,
+      "countsTowardCompletion": true,
+      "showAnswers": "after_close",
+      "sortOrder": 1,
+      "sectionCode": "AIO-02",
+      "questions": [
+        {
+          "question": "สูตร Prompt แบบ R-T-F หมายถึงอะไร",
+          "choice_a": "Role-Task-Format",
+          "choice_b": "Read-Test-Fix",
+          "choice_c": "Run-Table-File",
+          "choice_d": "Role-Time-File",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "Role-Task-Format เป็นโครงง่ายสำหรับสั่ง AI"
+        },
+        {
+          "question": "ถ้าต้องการให้ AI เขียนอีเมลสุภาพ ควรระบุอะไร",
+          "choice_a": "ผู้รับ วัตถุประสงค์ น้ำเสียง และความยาว",
+          "choice_b": "เฉพาะคำว่าเขียนอีเมล",
+          "choice_c": "ข้อมูลลับของทุกฝ่าย",
+          "choice_d": "ไม่ต้องระบุบริบท",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "บริบทและน้ำเสียงทำให้อีเมลเหมาะกับสถานการณ์"
+        },
+        {
+          "question": "การสรุปเอกสารประชุมควรให้ AI ส่งออกเป็นรูปแบบใดจึงอ่านง่าย",
+          "choice_a": "หัวข้อสำคัญ มติ งานที่ต้องทำ ผู้รับผิดชอบ",
+          "choice_b": "ย่อหน้าเดียวไม่มีหัวข้อ",
+          "choice_c": "คำตอบเป็นภาษาใดก็ได้",
+          "choice_d": "ตัวเลขสุ่ม",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "สรุปประชุมควรแยกประเด็นและ action item ชัดเจน"
+        },
+        {
+          "question": "การปรับภาษาจาก AI ควรขออะไรเพิ่ม",
+          "choice_a": "ระดับภาษาและกลุ่มผู้อ่าน",
+          "choice_b": "ให้ยาวที่สุด",
+          "choice_c": "ให้ตัดข้อมูลสำคัญ",
+          "choice_d": "ให้แปลโดยไม่ตรวจ",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "ภาษาต้องเหมาะกับผู้รับสาร"
+        },
+        {
+          "question": "ข้อใดคือ Prompt ที่ชัดเจนกว่า",
+          "choice_a": "ช่วยเขียนรายงาน",
+          "choice_b": "คุณเป็นเจ้าหน้าที่ธุรการ ช่วยร่างรายงานประชุม 1 หน้า ภาษาเป็นทางการ มีหัวข้อวาระ มติ และงานต่อไป",
+          "choice_c": "ทำให้ดี",
+          "choice_d": "เขียนอะไรก็ได้",
+          "answer": "ข",
+          "score": 1,
+          "explanation": "Prompt ระบุบทบาท งาน รูปแบบ และข้อจำกัดชัดเจน"
+        },
+        {
+          "question": "เมื่อใช้ AI สรุปไฟล์ยาว ควรตรวจอะไร",
+          "choice_a": "สาระสำคัญไม่หายและไม่มีข้อมูลแต่งเพิ่ม",
+          "choice_b": "จำนวนคำมากที่สุด",
+          "choice_c": "ความเร็วอย่างเดียว",
+          "choice_d": "สีตัวอักษร",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "สรุปต้องถูกต้อง ครบ และไม่แต่งข้อเท็จจริง"
+        },
+        {
+          "question": "ข้อใดเป็นการทำข้อมูลให้ปลอดภัยก่อนส่งเข้า AI",
+          "choice_a": "แทนชื่อจริงด้วยรหัส เช่น ผู้เรียน A",
+          "choice_b": "ใส่เบอร์โทรทุกคน",
+          "choice_c": "ใส่เลขบัญชี",
+          "choice_d": "ส่งไฟล์ทั้งระบบ",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "การไม่ระบุตัวตนลดความเสี่ยงข้อมูลส่วนบุคคล"
+        },
+        {
+          "question": "AI เหมาะกับงานใดในเอกสารสำนักงาน",
+          "choice_a": "ช่วยร่างและตรวจสำนวน",
+          "choice_b": "อนุมัติเอกสารแทนหัวหน้า",
+          "choice_c": "รับรองข้อเท็จจริงโดยไม่ตรวจ",
+          "choice_d": "เปิดเผยข้อมูลลับ",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "AI ช่วยงานร่างและปรับแก้ได้ แต่การอนุมัติเป็นหน้าที่มนุษย์"
+        },
+        {
+          "question": "Output format ใน Prompt คืออะไร",
+          "choice_a": "รูปแบบคำตอบที่ต้องการ เช่น ตาราง bullet หรือรายงาน",
+          "choice_b": "ชื่อเครื่องคอมพิวเตอร์",
+          "choice_c": "รหัสผ่าน",
+          "choice_d": "เวลาที่ใช้",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "การระบุรูปแบบช่วยให้ผลลัพธ์พร้อมใช้งาน"
+        },
+        {
+          "question": "ถ้าผลลัพธ์ AI ยังไม่ดี ควรทำอย่างไร",
+          "choice_a": "ปรับ Prompt เพิ่มตัวอย่างและข้อจำกัด",
+          "choice_b": "ยอมรับทันที",
+          "choice_c": "ลบทิ้งเสมอ",
+          "choice_d": "ส่งข้อมูลลับเพิ่ม",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "การปรับ Prompt เป็นกระบวนการทดลองและปรับปรุง"
+        }
+      ],
+      "csv": "/uploads/ai-office-productivity-free/assessments/unit-quiz-10-questions.csv"
+    },
+    {
+      "key": "post",
+      "title": "แบบทดสอบหลังเรียน",
+      "type": "post_test",
+      "description": "ใช้ตัดสินผ่านหลักสูตร ต้องได้ไม่น้อยกว่า 70%",
+      "passingScore": 70,
+      "maxAttempts": 2,
+      "timeLimit": 35,
+      "questionLimit": 20,
+      "required": true,
+      "countsTowardCompletion": true,
+      "showAnswers": "after_close",
+      "sortOrder": 1,
+      "questions": [
+        {
+          "question": "ข้อใดเป็นการใช้ AI ที่เหมาะสมที่สุดในงานสำนักงาน",
+          "choice_a": "ส่งข้อมูลบัตรประชาชนให้ AI ตรวจ",
+          "choice_b": "ให้ AI ช่วยร่างข้อความแล้วมนุษย์ตรวจทาน",
+          "choice_c": "คัดลอกคำตอบ AI ส่งทันที",
+          "choice_d": "ใช้ AI แทนการตัดสินใจทั้งหมด",
+          "answer": "ข",
+          "score": 1,
+          "explanation": "AI ควรเป็นผู้ช่วย มนุษย์ยังต้องตรวจสอบความถูกต้องและความเหมาะสม"
+        },
+        {
+          "question": "Prompt ที่ดีควรมีองค์ประกอบใด",
+          "choice_a": "บทบาท งาน บริบท รูปแบบผลลัพธ์",
+          "choice_b": "คำสั่งสั้นที่สุดเท่านั้น",
+          "choice_c": "ข้อมูลส่วนตัวให้มากที่สุด",
+          "choice_d": "คำถามกว้าง ๆ โดยไม่ระบุเป้าหมาย",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "Prompt ที่ชัดเจนช่วยให้ AI สร้างคำตอบตรงงานมากขึ้น"
+        },
+        {
+          "question": "ข้อมูลใดไม่ควรใส่ใน AI สาธารณะ",
+          "choice_a": "หัวข้อเอกสารทั่วไป",
+          "choice_b": "รูปแบบรายงานที่ต้องการ",
+          "choice_c": "เลขบัตรประชาชนและข้อมูลลูกค้า",
+          "choice_d": "ตัวอย่างข้อความที่ไม่ระบุตัวตน",
+          "answer": "ค",
+          "score": 1,
+          "explanation": "ข้อมูลส่วนบุคคลและข้อมูลลับต้องหลีกเลี่ยงหรือทำให้ไม่ระบุตัวตนก่อน"
+        },
+        {
+          "question": "การตรวจสอบคำตอบจาก AI ควรทำอย่างไร",
+          "choice_a": "เชื่อทั้งหมด",
+          "choice_b": "ตรวจแหล่งอ้างอิงและเทียบกับบริบทจริง",
+          "choice_c": "ดูแค่คำตอบยาวหรือสั้น",
+          "choice_d": "ส่งต่อทันทีถ้าภาษาอ่านดี",
+          "answer": "ข",
+          "score": 1,
+          "explanation": "AI อาจให้ข้อมูลผิดหรือไม่เหมาะกับบริบท จึงต้องตรวจสอบ"
+        },
+        {
+          "question": "การให้ AI ช่วยสรุปเอกสาร ควรระบุอะไรเพิ่ม",
+          "choice_a": "จำนวนบรรทัดหรือรูปแบบสรุป",
+          "choice_b": "รหัสผ่านไฟล์",
+          "choice_c": "ข้อมูลลับทั้งหมด",
+          "choice_d": "ไม่ต้องระบุอะไร",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "การกำหนดรูปแบบ เช่น bullet 5 ข้อ ช่วยให้ผลลัพธ์นำไปใช้ได้ง่าย"
+        },
+        {
+          "question": "ข้อใดเป็นผลลัพธ์ที่ควรขอจาก AI เมื่อทำรายงานจากตาราง",
+          "choice_a": "สรุปแนวโน้มและข้อสังเกต",
+          "choice_b": "เดาตัวเลขที่ไม่มีในข้อมูล",
+          "choice_c": "ลบข้อมูลผิดพลาดเองโดยไม่แจ้ง",
+          "choice_d": "ยืนยันว่าทุกอย่างถูกต้องแน่นอน",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "AI ช่วยสรุปแนวโน้มได้ แต่ต้องไม่แต่งข้อมูลเพิ่ม"
+        },
+        {
+          "question": "เมื่อ AI สร้างข้อความราชการ ควรทำสิ่งใดก่อนใช้จริง",
+          "choice_a": "ตรวจคำขึ้นต้น ลงท้าย และความสุภาพ",
+          "choice_b": "ส่งทันที",
+          "choice_c": "ลบชื่อผู้รับทั้งหมด",
+          "choice_d": "ทำให้ยาวที่สุด",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "เอกสารราชการต้องตรวจรูปแบบและระดับภาษาให้เหมาะสม"
+        },
+        {
+          "question": "Prompt Template มีประโยชน์อย่างไร",
+          "choice_a": "ทำให้ทำงานซ้ำได้เป็นระบบ",
+          "choice_b": "ทำให้ไม่ต้องตรวจงาน",
+          "choice_c": "ใช้แทนข้อมูลจริงทั้งหมด",
+          "choice_d": "ทำให้ AI ไม่เคยผิด",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "Template ช่วยลดเวลาตั้งคำสั่งและควบคุมคุณภาพงานซ้ำ ๆ"
+        },
+        {
+          "question": "ข้อใดคือหลักฐานประกอบใบงานที่ดี",
+          "choice_a": "ภาพหน้าจอ Prompt และผลลัพธ์ก่อนปรับแก้",
+          "choice_b": "ข้อความสั้นว่าเสร็จแล้ว",
+          "choice_c": "ไฟล์เปล่า",
+          "choice_d": "ลิงก์ที่เปิดไม่ได้",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "หลักฐานช่วยให้ครูเห็นกระบวนการคิดและการปรับแก้"
+        },
+        {
+          "question": "เป้าหมายหลักของหลักสูตรนี้คืออะไร",
+          "choice_a": "ใช้ AI อย่างปลอดภัยและสร้างงานสำนักงานได้จริง",
+          "choice_b": "เรียนเขียนโปรแกรม AI ขั้นสูง",
+          "choice_c": "สร้างโมเดล AI จากศูนย์",
+          "choice_d": "สอบใบอนุญาตวิศวกร",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "หลักสูตรเน้นงานเอกสาร ข้อมูล และสื่อสำนักงานสำหรับผู้เริ่มต้น"
+        },
+        {
+          "question": "เมื่อให้ AI วิเคราะห์ตารางยอดขาย ควรแนบอะไรไปกับคำสั่ง",
+          "choice_a": "คำอธิบายคอลัมน์และเป้าหมายการวิเคราะห์",
+          "choice_b": "เลขบัญชีลูกค้า",
+          "choice_c": "ข้อมูลที่ไม่เกี่ยวข้อง",
+          "choice_d": "คำสั่งว่าเดาเอง",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "AI ต้องรู้ความหมายของคอลัมน์และคำถามธุรกิจ"
+        },
+        {
+          "question": "ข้อใดคือข้อเสนอแนะที่ดีจากรายงาน AI",
+          "choice_a": "อิงจากข้อมูลที่เห็นและระบุเหตุผล",
+          "choice_b": "ฟันธงโดยไม่มีข้อมูล",
+          "choice_c": "แนะนำทุกอย่างพร้อมกัน",
+          "choice_d": "คัดลอกข้อความเดิมทั้งหมด",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "ข้อเสนอแนะควรเชื่อมกับข้อมูลและเหตุผล"
+        },
+        {
+          "question": "การสร้างสไลด์ด้วย AI ควรขอรูปแบบใด",
+          "choice_a": "หัวข้อสไลด์ ประเด็นสำคัญ และคำพูดประกอบ",
+          "choice_b": "ข้อความยาวเต็มหน้า",
+          "choice_c": "คำตอบไม่มีโครงสร้าง",
+          "choice_d": "เฉพาะรูปภาพ",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "โครงสไลด์ช่วยนำไปผลิตต่อได้ง่าย"
+        },
+        {
+          "question": "ถ้า AI แนะนำสูตร Excel ควรทำอย่างไร",
+          "choice_a": "ทดสอบกับข้อมูลตัวอย่างและตรวจผลลัพธ์",
+          "choice_b": "ใช้ทันทีโดยไม่ลอง",
+          "choice_c": "ลบสูตรเดิมทั้งหมด",
+          "choice_d": "ส่งข้อมูลลับเพิ่ม",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "สูตรต้องทดสอบกับข้อมูลจริงหรือตัวอย่างก่อนใช้งาน"
+        },
+        {
+          "question": "ชิ้นงานสุดท้ายควรแสดงอะไร",
+          "choice_a": "เอกสาร รายงานข้อมูล โครงสไลด์ และหลักฐาน Prompt",
+          "choice_b": "เฉพาะคำตอบ AI ดิบ",
+          "choice_c": "ไฟล์เปล่า",
+          "choice_d": "ภาพหน้าจออย่างเดียว",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "ชิ้นงานต้องพิสูจน์การประยุกต์ใช้ AI ครบกระบวนการ"
+        },
+        {
+          "question": "การอ้างว่า AI ถูกต้อง 100% เป็นอย่างไร",
+          "choice_a": "ไม่เหมาะสม เพราะ AI อาจผิดพลาด",
+          "choice_b": "ถูกเสมอ",
+          "choice_c": "ควรใช้ในเอกสารทางการ",
+          "choice_d": "ทำให้ไม่ต้องตรวจงาน",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "AI เป็นเครื่องมือช่วยคิด ไม่ใช่แหล่งความจริงสุดท้าย"
+        },
+        {
+          "question": "ข้อใดเป็นวิธีเขียน Prompt สำหรับเปลี่ยนภาษารายงานให้อ่านง่าย",
+          "choice_a": "ระบุกลุ่มผู้อ่าน น้ำเสียง และตัวอย่างสำนวน",
+          "choice_b": "บอกว่าเขียนใหม่เฉย ๆ",
+          "choice_c": "ให้ตัดทุกตัวเลข",
+          "choice_d": "ให้เพิ่มข้อมูลที่ไม่มี",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "การระบุกลุ่มผู้อ่านและน้ำเสียงทำให้ผลลัพธ์ตรงงาน"
+        },
+        {
+          "question": "การส่งงานแบบ file_or_link หมายถึงอะไร",
+          "choice_a": "ส่งเป็นไฟล์หรือลิงก์ก็ได้",
+          "choice_b": "ส่งได้เฉพาะข้อความ",
+          "choice_c": "ห้ามส่งไฟล์",
+          "choice_d": "ต้องส่งทางอีเมลเท่านั้น",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "ระบบรองรับทั้งไฟล์และลิงก์สำหรับใบงาน"
+        },
+        {
+          "question": "Rubric มีไว้เพื่ออะไร",
+          "choice_a": "กำหนดเกณฑ์ตรวจงานให้ชัดและสม่ำเสมอ",
+          "choice_b": "แทนการเรียนทั้งหมด",
+          "choice_c": "ซ่อนคะแนน",
+          "choice_d": "ใช้กับครูเท่านั้นไม่เกี่ยวกับผู้เรียน",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "Rubric ช่วยให้ผู้เรียนรู้เป้าหมายและครูตรวจได้เป็นมาตรฐาน"
+        },
+        {
+          "question": "ข้อใดควรทำก่อนเผยแพร่เอกสารที่ AI ช่วยร่าง",
+          "choice_a": "ตรวจความถูกต้อง ภาษา รูปแบบ และข้อมูลส่วนบุคคล",
+          "choice_b": "เผยแพร่ทันที",
+          "choice_c": "ใส่ข้อมูลทุกอย่างเพิ่ม",
+          "choice_d": "ลบชื่อหน่วยงานเสมอ",
+          "answer": "ก",
+          "score": 1,
+          "explanation": "เอกสารต้องตรวจครบทั้งสาระ ภาษา รูปแบบ และความปลอดภัย"
+        }
+      ],
+      "csv": "/uploads/ai-office-productivity-free/assessments/post-test-20-questions.csv"
+    }
+  ],
+  "tasks": [
+    {
+      "type": "worksheet",
+      "sectionCode": "AIO-02",
+      "lessonTitle": "สูตร Prompt สำหรับเอกสารสำนักงาน",
+      "title": "ใบงานที่ 1: ร่างเอกสารสำนักงานด้วย Prompt",
+      "description": "ร่างอีเมลหรือประกาศจากสถานการณ์ที่กำหนดและแนบหลักฐาน Prompt",
+      "instructionHtml": "ให้ผู้เรียนเขียน Prompt อย่างน้อย 2 เวอร์ชัน เลือกผลลัพธ์ที่เหมาะสม ปรับแก้ด้วยตนเอง และส่งไฟล์เอกสารสุดท้ายพร้อมหลักฐาน",
+      "instructionFileUrl": "/uploads/ai-office-productivity-free/worksheets/worksheet-01-prompt-document.pdf",
+      "instructionFileName": "worksheet-01-prompt-document.pdf",
+      "attachmentUrl": "/uploads/ai-office-productivity-free/samples/prompt-template-office-ai.txt",
+      "attachmentFileName": "prompt-template-office-ai.txt",
+      "attachmentTitle": "Prompt Template",
+      "attachmentType": "doc",
+      "maxScore": 100,
+      "passingScore": 70,
+      "weight": 20,
+      "dueDays": 7,
+      "evidenceCount": 2,
+      "sortOrder": 1,
+      "rubrics": [
+        [
+          "Prompt ชัดเจน",
+          "มีบทบาท งาน รูปแบบ และข้อจำกัด",
+          25
+        ],
+        [
+          "ภาษาเหมาะสม",
+          "สุภาพ กระชับ ใช้ได้จริง",
+          25
+        ],
+        [
+          "การปรับแก้",
+          "ตรวจและปรับบริบท ไม่คัดลอกดิบ",
+          25
+        ],
+        [
+          "หลักฐานครบ",
+          "แนบ Prompt และผลลัพธ์ครบ",
+          25
+        ]
+      ]
+    },
+    {
+      "type": "worksheet",
+      "sectionCode": "AIO-02",
+      "lessonTitle": "สรุปเอกสารและปรับภาษาให้เหมาะกับผู้รับ",
+      "title": "ใบงานที่ 2: สรุปเอกสารและปรับภาษา",
+      "description": "สรุปไฟล์ข้อความตัวอย่างและปรับเป็นบันทึกข้อความแบบทางการ",
+      "instructionHtml": "ใช้ sample-source-document.txt ให้ AI ช่วยสรุปเป็น 5 bullet และปรับภาษาเป็นทางการ แล้วตรวจว่าข้อมูลไม่ถูกแต่งเพิ่ม",
+      "instructionFileUrl": "/uploads/ai-office-productivity-free/worksheets/worksheet-02-summary-revision.pdf",
+      "instructionFileName": "worksheet-02-summary-revision.pdf",
+      "attachmentUrl": "/uploads/ai-office-productivity-free/samples/sample-source-document.txt",
+      "attachmentFileName": "sample-source-document.txt",
+      "attachmentTitle": "ไฟล์ข้อความตัวอย่าง",
+      "attachmentType": "doc",
+      "maxScore": 100,
+      "passingScore": 70,
+      "weight": 20,
+      "dueDays": 7,
+      "evidenceCount": 2,
+      "sortOrder": 2,
+      "rubrics": [
+        [
+          "สรุปครบ",
+          "จับประเด็นสำคัญครบถ้วน",
+          30
+        ],
+        [
+          "ไม่แต่งข้อมูล",
+          "คงข้อเท็จจริงจากต้นฉบับ",
+          25
+        ],
+        [
+          "ภาษาเหมาะสม",
+          "เป็นทางการและอ่านง่าย",
+          25
+        ],
+        [
+          "หลักฐานการตรวจ",
+          "อธิบายการตรวจและปรับแก้",
+          20
+        ]
+      ]
+    },
+    {
+      "type": "practice",
+      "sectionCode": "AIO-03",
+      "lessonTitle": "ให้ AI ช่วยอ่านตารางและหา Insight",
+      "title": "แบบฝึกปฏิบัติ: วิเคราะห์ข้อมูลอบรมและเขียนรายงาน",
+      "description": "ใช้ไฟล์ CSV วิเคราะห์แนวโน้มและจัดทำรายงาน 1 หน้า",
+      "instructionHtml": "ดาวน์โหลด office-training-data.csv แล้วใช้ AI ช่วยสรุปแนวโน้ม จุดที่ควรติดตาม และข้อเสนอแนะ โดยอ้างอิงตัวเลขจากตารางเท่านั้น",
+      "instructionFileUrl": "/uploads/ai-office-productivity-free/worksheets/practice-01-data-report.pdf",
+      "instructionFileName": "practice-01-data-report.pdf",
+      "attachmentUrl": "/uploads/ai-office-productivity-free/samples/office-training-data.csv",
+      "attachmentFileName": "office-training-data.csv",
+      "attachmentTitle": "ไฟล์ข้อมูลตัวอย่าง",
+      "attachmentType": "sheet",
+      "maxScore": 100,
+      "passingScore": 70,
+      "weight": 25,
+      "dueDays": 10,
+      "evidenceCount": 2,
+      "sortOrder": 1,
+      "rubrics": [
+        [
+          "วิเคราะห์ถูกต้อง",
+          "ใช้ตัวเลขจริงและไม่แต่งข้อมูล",
+          30
+        ],
+        [
+          "ข้อค้นพบชัดเจน",
+          "อธิบายแนวโน้มและปัญหา",
+          25
+        ],
+        [
+          "ข้อเสนอแนะใช้ได้จริง",
+          "เชื่อมโยงกับข้อมูล",
+          25
+        ],
+        [
+          "รูปแบบรายงาน",
+          "อ่านง่ายและมีโครงสร้าง",
+          20
+        ]
+      ]
+    },
+    {
+      "type": "practice",
+      "sectionCode": "AIO-04",
+      "lessonTitle": "จัดทำชิ้นงานสุดท้ายและตรวจคุณภาพ",
+      "title": "ชิ้นงานสุดท้าย: ชุดงานสำนักงานดิจิทัลด้วย AI",
+      "description": "ส่งเอกสารสรุป รายงานข้อมูล โครงสไลด์ และหลักฐาน Prompt",
+      "instructionHtml": "สร้างชุดงานสำนักงานสำหรับประชาสัมพันธ์หลักสูตรระยะสั้น 1 หลักสูตร โดยใช้ AI ช่วยร่าง วิเคราะห์ และวางโครงนำเสนอ พร้อมบันทึกการตรวจและปรับแก้",
+      "instructionFileUrl": "/uploads/ai-office-productivity-free/worksheets/final-project-office-ai-package.pdf",
+      "instructionFileName": "final-project-office-ai-package.pdf",
+      "attachmentUrl": "/uploads/ai-office-productivity-free/samples/prompt-template-office-ai.txt",
+      "attachmentFileName": "prompt-template-office-ai.txt",
+      "attachmentTitle": "Prompt Template",
+      "attachmentType": "doc",
+      "maxScore": 100,
+      "passingScore": 70,
+      "weight": 35,
+      "dueDays": 14,
+      "evidenceCount": 3,
+      "sortOrder": 2,
+      "rubrics": [
+        [
+          "ความครบถ้วน",
+          "มีเอกสาร รายงาน โครงสไลด์ และหลักฐานครบ",
+          25
+        ],
+        [
+          "ความถูกต้อง",
+          "ข้อมูล ตัวเลข และบริบทถูกต้อง",
+          25
+        ],
+        [
+          "การใช้ AI เหมาะสม",
+          "Prompt ชัด มีการตรวจและปรับแก้",
+          20
+        ],
+        [
+          "การนำเสนอและความปลอดภัย",
+          "จัดรูปแบบดีและไม่เปิดเผยข้อมูลลับ",
+          30
+        ]
+      ]
+    }
+  ],
+  "evaluationRules": [
+    {
+      "criterion": "lesson_progress",
+      "title": "ความก้าวหน้าการเรียน",
+      "weight": 20,
+      "passing": 80,
+      "required": true,
+      "sortOrder": 1
+    },
+    {
+      "criterion": "post_test",
+      "title": "แบบทดสอบหลังเรียน",
+      "weight": 30,
+      "passing": 70,
+      "required": true,
+      "sortOrder": 2
+    },
+    {
+      "criterion": "worksheet",
+      "title": "ใบงาน",
+      "weight": 20,
+      "passing": 70,
+      "required": true,
+      "sortOrder": 3
+    },
+    {
+      "criterion": "practice",
+      "title": "แบบฝึกและชิ้นงานสุดท้าย",
+      "weight": 30,
+      "passing": 70,
+      "required": true,
+      "sortOrder": 4
+    }
+  ],
+  "files": {
+    "outline": "/uploads/ai-office-productivity-free/teacher/course-outline-ai-office-12h.pdf",
+    "knowledge_1": "/uploads/ai-office-productivity-free/knowledge/unit-01-ai-basics-safety.pdf",
+    "knowledge_2": "/uploads/ai-office-productivity-free/knowledge/unit-02-prompt-document.pdf",
+    "knowledge_3": "/uploads/ai-office-productivity-free/knowledge/unit-03-ai-data-report.pdf",
+    "knowledge_4": "/uploads/ai-office-productivity-free/knowledge/unit-04-final-office-package.pdf",
+    "worksheet_1": "/uploads/ai-office-productivity-free/worksheets/worksheet-01-prompt-document.pdf",
+    "worksheet_2": "/uploads/ai-office-productivity-free/worksheets/worksheet-02-summary-revision.pdf",
+    "practice_1": "/uploads/ai-office-productivity-free/worksheets/practice-01-data-report.pdf",
+    "final_project": "/uploads/ai-office-productivity-free/worksheets/final-project-office-ai-package.pdf",
+    "teacher_guide": "/uploads/ai-office-productivity-free/teacher/teacher-guide-and-answer-key.pdf",
+    "pre_csv": "/uploads/ai-office-productivity-free/assessments/pre-test-10-questions.csv",
+    "quiz_csv": "/uploads/ai-office-productivity-free/assessments/unit-quiz-10-questions.csv",
+    "post_csv": "/uploads/ai-office-productivity-free/assessments/post-test-20-questions.csv",
+    "sample_data": "/uploads/ai-office-productivity-free/samples/office-training-data.csv",
+    "prompt_template": "/uploads/ai-office-productivity-free/samples/prompt-template-office-ai.txt",
+    "source_document": "/uploads/ai-office-productivity-free/samples/sample-source-document.txt",
+    "readme": "/uploads/ai-office-productivity-free/README.txt",
+    "cover": "/uploads/ai-office-productivity-free/covers/ai-office-productivity-cover.png",
+    "lesson-01-ai-overview": "/uploads/ai-office-productivity-free/videos/lesson-01-ai-overview.mp4",
+    "lesson-02-ai-safety": "/uploads/ai-office-productivity-free/videos/lesson-02-ai-safety.mp4",
+    "lesson-03-prompt-basics": "/uploads/ai-office-productivity-free/videos/lesson-03-prompt-basics.mp4",
+    "lesson-04-document-summary": "/uploads/ai-office-productivity-free/videos/lesson-04-document-summary.mp4",
+    "lesson-05-data-analysis": "/uploads/ai-office-productivity-free/videos/lesson-05-data-analysis.mp4",
+    "lesson-06-excel-formulas": "/uploads/ai-office-productivity-free/videos/lesson-06-excel-formulas.mp4",
+    "lesson-07-slide-outline": "/uploads/ai-office-productivity-free/videos/lesson-07-slide-outline.mp4",
+    "lesson-08-final-project": "/uploads/ai-office-productivity-free/videos/lesson-08-final-project.mp4"
+  }
+}
