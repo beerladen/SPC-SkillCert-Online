@@ -96,7 +96,8 @@ const defaultItems: ItemSeed[] = [
   { sectionCode: "system", title: "ผู้ใช้งาน", href: "/admin/users", iconKey: "Users", sortOrder: 2, isSystem: true },
   { sectionCode: "system", title: "จัดการเมนู", href: "/admin/navigation", iconKey: "Navigation", allowedRoles: "admin", sortOrder: 3, isSystem: true },
   { sectionCode: "system", title: "ตั้งค่าเว็บไซต์", href: "/admin/settings", iconKey: "Settings", sortOrder: 4, isSystem: true },
-  { sectionCode: "system", title: "ข่าวประชาสัมพันธ์", href: "/admin/announcements", iconKey: "Newspaper", allowedRoles: "admin,staff", sortOrder: 5, isSystem: true },
+  { sectionCode: "system", title: "สำรองข้อมูล", href: "/admin/backups", iconKey: "Database", allowedRoles: "admin", sortOrder: 5, isSystem: true },
+  { sectionCode: "system", title: "ข่าวประชาสัมพันธ์", href: "/admin/announcements", iconKey: "Newspaper", allowedRoles: "admin,staff", sortOrder: 6, isSystem: true },
   { sectionCode: "bottom", title: "ข้อความติดต่อ", href: "/feedback", iconKey: "MessageCircle", sortOrder: 1, isSystem: true },
   { sectionCode: "bottom", title: "คู่มือระบบ", href: "/help", iconKey: "HelpCircle", sortOrder: 2, isSystem: true },
 ];
@@ -186,6 +187,36 @@ export async function ensureAdminNavigationTables() {
       }
     }
 
+    for (const section of defaultSections) {
+      await executeQuery<ResultSetHeader>(
+        `INSERT INTO admin_navigation_sections (code, title, sort_order, status, is_system)
+         VALUES (?, ?, ?, 'active', ?)
+         ON DUPLICATE KEY UPDATE code = code`,
+        [section.code, section.title, section.sortOrder, section.isSystem ? 1 : 0],
+      );
+    }
+
+    for (const item of defaultItems) {
+      await executeQuery<ResultSetHeader>(
+        `INSERT INTO admin_navigation_items
+           (section_id, title, href, icon_key, badge_key, allowed_roles, sort_order, status, is_system)
+         SELECT id, ?, ?, ?, ?, ?, ?, 'active', ?
+         FROM admin_navigation_sections
+         WHERE code = ?
+         ON DUPLICATE KEY UPDATE href = href`,
+        [
+          item.title,
+          item.href,
+          item.iconKey,
+          item.badgeKey ?? null,
+          item.allowedRoles ?? "admin,staff,instructor",
+          item.sortOrder,
+          item.isSystem ? 1 : 0,
+          item.sectionCode,
+        ],
+      );
+    }
+
     await executeQuery<ResultSetHeader>(
       `UPDATE admin_navigation_items
        SET allowed_roles = 'admin,staff,instructor'
@@ -212,7 +243,7 @@ export async function ensureAdminNavigationTables() {
     await executeQuery<ResultSetHeader>(
       `UPDATE admin_navigation_items
        SET allowed_roles = 'admin'
-       WHERE href IN ('/admin/navigation', '/admin/settings')`,
+       WHERE href IN ('/admin/navigation', '/admin/settings', '/admin/backups')`,
     );
   })().catch((error) => {
     ensurePromise = null;

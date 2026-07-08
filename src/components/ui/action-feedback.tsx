@@ -40,9 +40,9 @@ export function ActionFeedback({
       className={cn("flex items-start gap-3 rounded-lg border px-4 py-3 text-sm shadow-xs", feedbackStyles[variant], className)}
     >
       <Icon className={cn("mt-0.5 size-5 shrink-0", variant === "loading" && "animate-spin")} />
-      <div className="grid gap-1">
+      <div className="grid min-w-0 gap-1">
         {title && <p className="font-semibold">{title}</p>}
-        <p className="leading-6">{message}</p>
+        <p className="break-words leading-6">{message}</p>
       </div>
     </div>
   );

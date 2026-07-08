@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "backup:github": "powershell -ExecutionPolicy Bypass -File scripts/backup-to-github.ps1",
+    "backup:scheduler": "node scripts/backup/scheduler.mjs",
+    "backup:worker": "node scripts/backup/run-backup.mjs",
     "db:setup": "node scripts/db/setup.mjs",
     "db:check": "node scripts/db/check.mjs",
     "dev:seed:certificate-approval": "node scripts/dev/seed-certificate-approval-demo.mjs",

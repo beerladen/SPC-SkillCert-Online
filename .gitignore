@@ -7,7 +7,8 @@ node_modules/
 dist/
 coverage/
 tmp/
-backups/
+/backups/
+.backups/
 __MACOSX/
 .DS_Store
 *.log
