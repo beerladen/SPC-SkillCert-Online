@@ -7,6 +7,7 @@ import { logAudit } from "@/lib/audit";
 import { getPool } from "@/lib/db";
 import { learningSubmissionFileEvidenceMarker } from "@/lib/learning-task-files";
 import {
+  deletePublicUploadFiles,
   isUploadFileEntry,
   learningSubmissionUploadPolicy,
   type SavedUpload,
@@ -61,6 +62,16 @@ function uploadEntries(formData: FormData, key: string) {
   return formData
     .getAll(key)
     .filter(isUploadFileEntry);
+}
+
+async function deleteReplacedSubmissionFiles(fileUrls: Array<string | null>) {
+  if (fileUrls.length === 0) return;
+
+  try {
+    await deletePublicUploadFiles(fileUrls);
+  } catch (error) {
+    console.warn("Could not delete replaced learning task upload files", error);
+  }
 }
 
 async function getEnrollment(
@@ -251,6 +262,7 @@ export async function submitLearningTaskAction(formData: FormData): Promise<Acti
   const user = await requireCurrentUser(["student", "admin", "staff", "instructor"]);
   const pool = getPool();
   const connection = await pool.getConnection();
+  let replacedFileUrls: Array<string | null> = [];
 
   try {
     await connection.beginTransaction();
@@ -258,6 +270,39 @@ export async function submitLearningTaskAction(formData: FormData): Promise<Acti
     const taskId = numberValue(formData, "taskId");
     const learnerEmail = learnerEmailForAction(formData, user);
     const enrollment = await getEnrollment(connection, slug, learnerEmail);
+    const [existingSubmissionRows] = await connection.execute<
+      Array<
+        RowDataPacket & {
+          id: number;
+          status: string;
+          submitted_file_url: string | null;
+        }
+      >
+    >(
+      `SELECT id, status, submitted_file_url
+       FROM learning_task_submissions
+       WHERE task_id = ? AND enrollment_id = ?
+       LIMIT 1`,
+      [taskId, enrollment.id],
+    );
+    const existingSubmission = existingSubmissionRows[0] ?? null;
+    const replacePreviousSubmission = existingSubmission?.status === "needs_revision";
+
+    if (replacePreviousSubmission) {
+      const [oldEvidenceRows] = await connection.execute<
+        Array<RowDataPacket & { evidence_url: string | null }>
+      >(
+        `SELECT evidence_url
+         FROM learning_task_evidences
+         WHERE submission_id = ? AND task_id = ? AND enrollment_id = ?`,
+        [existingSubmission.id, taskId, enrollment.id],
+      );
+      replacedFileUrls = [
+        existingSubmission.submitted_file_url,
+        ...oldEvidenceRows.map((row) => row.evidence_url),
+      ];
+    }
+
     const uploaded = await saveValidatedUpload(formData.get("submissionFile"), {
       ...learningSubmissionUploadPolicy,
       rootFolder: "learning-submissions",
@@ -309,8 +354,8 @@ export async function submitLearningTaskAction(formData: FormData): Promise<Acti
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending_review', NOW())
        ON DUPLICATE KEY UPDATE
          answer_text = VALUES(answer_text),
-         submitted_file_url = COALESCE(VALUES(submitted_file_url), submitted_file_url),
-         submitted_file_name = COALESCE(VALUES(submitted_file_name), submitted_file_name),
+         submitted_file_url = IF(? = 1, VALUES(submitted_file_url), COALESCE(VALUES(submitted_file_url), submitted_file_url)),
+         submitted_file_name = IF(? = 1, VALUES(submitted_file_name), COALESCE(VALUES(submitted_file_name), submitted_file_name)),
          submitted_link_url = VALUES(submitted_link_url),
          note = VALUES(note),
          status = 'pending_review',
@@ -328,6 +373,8 @@ export async function submitLearningTaskAction(formData: FormData): Promise<Acti
         uploaded?.fileName ?? null,
         submittedLink || null,
         note || null,
+        replacePreviousSubmission ? 1 : 0,
+        replacePreviousSubmission ? 1 : 0,
       ],
     );
 
@@ -336,6 +383,15 @@ export async function submitLearningTaskAction(formData: FormData): Promise<Acti
       [taskId, enrollment.id],
     );
     const submissionId = Number(submissionRows[0]?.id ?? result.insertId);
+    if (replacePreviousSubmission) {
+      await connection.execute(
+        `DELETE FROM learning_task_evidences
+         WHERE submission_id = ? AND task_id = ? AND enrollment_id = ?`,
+        [submissionId, taskId, enrollment.id],
+      );
+      await connection.execute("DELETE FROM learning_task_rubric_scores WHERE submission_id = ?", [submissionId]);
+    }
+
     const [sortRows] = await connection.execute<Array<RowDataPacket & { max_sort: number | null }>>(
       `SELECT COALESCE(MAX(sort_order), 0) AS max_sort
        FROM learning_task_evidences
@@ -395,6 +451,8 @@ export async function submitLearningTaskAction(formData: FormData): Promise<Acti
       taskSummary.totalTasks > 0 &&
       taskSummary.submittedTasks >= taskSummary.totalTasks;
     await connection.commit();
+    await deleteReplacedSubmissionFiles(replacedFileUrls);
+
     await logAudit({
       userId: user.id,
       action: "learning_task.submitted",

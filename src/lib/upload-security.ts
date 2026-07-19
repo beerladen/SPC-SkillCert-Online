@@ -1,6 +1,6 @@
 import "server-only";
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 export interface SavedUpload {
@@ -135,4 +135,51 @@ export async function saveValidatedUpload(
     mimeType: file.type || null,
     size: file.size,
   };
+}
+
+export function resolvePublicUploadPath(fileUrl: string | null | undefined) {
+  if (!fileUrl) return null;
+
+  const normalizedUrl = fileUrl.split(/[?#]/)[0];
+  if (!normalizedUrl.startsWith("/uploads/")) return null;
+
+  let decodedUrl: string;
+  try {
+    decodedUrl = decodeURIComponent(normalizedUrl);
+  } catch {
+    decodedUrl = normalizedUrl;
+  }
+
+  const relativePath = decodedUrl.replace(/^\/uploads\//, "");
+  if (!relativePath || relativePath.includes("\0")) return null;
+
+  const uploadRoot = path.resolve(process.cwd(), "public", "uploads");
+  const targetPath = path.resolve(uploadRoot, relativePath);
+  if (targetPath === uploadRoot || !targetPath.startsWith(`${uploadRoot}${path.sep}`)) {
+    return null;
+  }
+
+  return targetPath;
+}
+
+export async function deletePublicUploadFiles(fileUrls: Iterable<string | null | undefined>) {
+  const filePaths = new Set<string>();
+  for (const fileUrl of fileUrls) {
+    const filePath = resolvePublicUploadPath(fileUrl);
+    if (filePath) filePaths.add(filePath);
+  }
+
+  const deleted: string[] = [];
+  for (const filePath of filePaths) {
+    try {
+      await unlink(filePath);
+      deleted.push(filePath);
+    } catch (error) {
+      if (!(error instanceof Error) || !("code" in error) || error.code !== "ENOENT") {
+        throw error;
+      }
+    }
+  }
+
+  return deleted;
 }

@@ -1497,6 +1497,15 @@ function TaskWorkbench({
                             <p className="mt-2 line-clamp-2 font-semibold leading-6 group-hover:text-primary">
                               {task.title}
                             </p>
+                            {task.submission?.status === "needs_revision" && task.submission.feedback && (
+                              <p
+                                className="mt-2 line-clamp-2 rounded-md border border-rose-200 bg-rose-50 px-2 py-1 text-xs leading-5 text-rose-800"
+                                title={task.submission.feedback}
+                              >
+                                <span className="font-semibold">Feedback ครู: </span>
+                                {task.submission.feedback}
+                              </p>
+                            )}
                           </div>
                         </div>
                       </TableCell>

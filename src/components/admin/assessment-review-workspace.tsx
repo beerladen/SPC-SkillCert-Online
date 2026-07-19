@@ -135,6 +135,8 @@ export function AssessmentReviewWorkspace({
   const [historyLearnerId, setHistoryLearnerId] = useState<number | null>(null);
   const [selected, setSelected] = useState<AdminReviewSubmissionRow | null>(null);
   const [notice, setNotice] = useState<{ title: string; message: string; ok: boolean } | null>(null);
+  const [savedSubmissionIds, setSavedSubmissionIds] = useState<Set<number>>(() => new Set());
+  const [savingSubmissionId, setSavingSubmissionId] = useState<number | null>(null);
   const [isPending, startTransition] = useTransition();
 
   const pendingRows = useMemo(
@@ -210,7 +212,10 @@ export function AssessmentReviewWorkspace({
   const reviewCourse =
     selectedLearner?.courses.find((course) => course.courseId === reviewTarget?.courseId) ?? null;
   const reviewRows = pendingRows.filter(
-    (row) => row.learnerId === reviewTarget?.learnerId && row.courseId === reviewTarget?.courseId,
+    (row) =>
+      row.learnerId === reviewTarget?.learnerId &&
+      row.courseId === reviewTarget?.courseId &&
+      !savedSubmissionIds.has(row.id),
   );
   const historyRows = rows
     .filter((row) => row.learnerId === historyLearnerId)
@@ -355,6 +360,48 @@ export function AssessmentReviewWorkspace({
     });
   }
 
+  function submitCourseItemGrade(row: AdminReviewSubmissionRow, form: HTMLFormElement | null) {
+    if (!form || savingSubmissionId !== null) return;
+
+    const sourceFormData = new FormData(form);
+    const formData = new FormData();
+    formData.append("submissionId", String(row.id));
+    formData.append(`score_${row.id}`, String(sourceFormData.get(`score_${row.id}`) ?? ""));
+    formData.append(`decision_${row.id}`, String(sourceFormData.get(`decision_${row.id}`) ?? "graded"));
+    formData.append(`feedback_${row.id}`, String(sourceFormData.get(`feedback_${row.id}`) ?? ""));
+
+    setSavingSubmissionId(row.id);
+    startTransition(async () => {
+      try {
+        const result = await gradeLearningTaskSubmissionsBatchAction(formData);
+        setNotice({
+          title: result.ok ? "บันทึกผลตรวจใบงานแล้ว" : "บันทึกรายใบงานไม่สำเร็จ",
+          message: result.message,
+          ok: result.ok,
+        });
+        if (result.ok) {
+          setSavedSubmissionIds((previous) => {
+            const next = new Set(previous);
+            next.add(row.id);
+            return next;
+          });
+          if (reviewRows.filter((item) => item.id !== row.id).length === 0) {
+            setReviewTarget(null);
+          }
+          router.refresh();
+        }
+      } catch (error) {
+        setNotice({
+          title: "บันทึกรายใบงานไม่สำเร็จ",
+          message: error instanceof Error ? error.message : "เกิดข้อผิดพลาดระหว่างบันทึกผลตรวจ",
+          ok: false,
+        });
+      } finally {
+        setSavingSubmissionId(null);
+      }
+    });
+  }
+
   return (
     <div className="grid min-w-0 max-w-full gap-6">
       <div className="grid min-w-0 gap-4 md:grid-cols-3">
@@ -449,6 +496,15 @@ export function AssessmentReviewWorkspace({
                       <FileCheck2 className="size-4" />
                       ตรวจละเอียด
                     </Button>
+                    <Button
+                      type="button"
+                      size="sm"
+                      disabled={isPending || savingSubmissionId !== null}
+                      onClick={(event) => submitCourseItemGrade(row, event.currentTarget.form)}
+                    >
+                      <CheckCircle2 className="size-4" />
+                      {savingSubmissionId === row.id ? "กำลังบันทึก" : "บันทึกรายใบงาน"}
+                    </Button>
                   </label>
                   <label className="grid content-start gap-2 text-sm font-medium">
                     Feedback
@@ -466,7 +522,7 @@ export function AssessmentReviewWorkspace({
               <Button type="button" variant="outline" onClick={() => setReviewTarget(null)}>
                 ยกเลิก
               </Button>
-              <Button type="submit" disabled={isPending}>
+              <Button type="submit" disabled={isPending || savingSubmissionId !== null}>
                 <CheckCircle2 className="size-4" />
                 บันทึกคะแนนทั้งรายวิชา
               </Button>

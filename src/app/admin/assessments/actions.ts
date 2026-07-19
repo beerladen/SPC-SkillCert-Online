@@ -34,10 +34,10 @@ function optionalNumber(formData: FormData, key: string) {
   return value;
 }
 
-function requiredBatchNumber(formData: FormData, key: string) {
+function optionalBatchNumber(formData: FormData, key: string) {
   const raw = text(formData, key);
   if (!raw) {
-    throw new Error("กรุณากรอกคะแนนให้ครบทุกใบงานในรายวิชานี้");
+    return null;
   }
 
   const value = Number(raw);
@@ -317,7 +317,10 @@ export async function gradeLearningTaskSubmissionsBatchAction(
 
       const maxScore = Number(submission.max_score ?? 0);
       const passingScore = Number(submission.passing_score ?? 0);
-      const score = requiredBatchNumber(formData, `score_${submissionId}`);
+      const score = optionalBatchNumber(formData, `score_${submissionId}`);
+      if (score === null) {
+        continue;
+      }
       const feedback = text(formData, `feedback_${submissionId}`) || null;
       const decision = text(formData, `decision_${submissionId}`) || "graded";
 
@@ -347,6 +350,10 @@ export async function gradeLearningTaskSubmissionsBatchAction(
       refreshKeys.add(`${Number(submission.enrollment_id)}:${Number(submission.course_id)}`);
       slugs.add(submission.course_slug);
       auditRows.push({ id: submissionId, score, status, decision });
+    }
+
+    if (auditRows.length === 0) {
+      throw new Error("กรุณากรอกคะแนนอย่างน้อย 1 ใบงานก่อนบันทึก");
     }
 
     for (const key of refreshKeys) {
